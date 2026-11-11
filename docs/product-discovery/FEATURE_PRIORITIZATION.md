@@ -186,21 +186,30 @@ The table preserves the current product decisions and original prioritization. U
 - **MVP:** 50/50 — original notation retained; exact MVP scope is an open decision.
 - **Premium:** No
 
-### 2.21 Stars and Leaderboard
+### 2.21 Stars
 
-- **Description:** Stars are earned through defined learning or practice activities and may contribute to user rankings on leaderboards.
-- **User value:** Make learning achievements visible and provide a score for optional competitive comparison.
-- **Priority:** To be assigned
-- **MVP:** To be assigned
+- **Description:** Stars are earned through defined learning or practice activities and recognize milestone completion.
+- **User value:** Make learning achievements visible and encourage continued progress.
+- **Priority:** Should-have
+- **MVP:** No
 - **Premium:** No plan restriction currently specified
 - **Product rule:** Stars are an achievement/score metric and are not spendable currency.
 
-### 2.22 Achievements
+### 2.22 Leaderboard
+
+- **Description:** Optional ranking display showing top solvers or learners based on star counts or solve times.
+- **User value:** Provide optional competitive comparison and motivation.
+- **Priority:** Nice-to-have
+- **MVP:** No
+- **Premium:** No
+- **Open decision:** Confirm whether leaderboards rank by star count, solve averages, or challenge results, and define anti-cheat requirements.
+
+### 2.23 Achievements
 
 - **Description:** Milestones that recognize notable user accomplishments. Selected achievements may award in-game currency.
 - **User value:** Recognize progress and provide occasional rewards for meaningful milestones.
-- **Priority:** To be assigned
-- **MVP:** To be assigned
+- **Priority:** Should-have
+- **MVP:** No
 - **Premium:** No plan restriction currently specified
 
 ## 3. Consolidated Feature Matrix
@@ -227,8 +236,9 @@ The table preserves the current product decisions and original prioritization. U
 | Shop | Nice-to-have | No | TBD |
 | Competitions | Nice-to-have | No | No |
 | Settings | Must-have | 50/50 | No |
-| Stars and Leaderboard | To be assigned | To be assigned | TBD |
-| Achievements | To be assigned | To be assigned | TBD |
+| Stars | Should-have | No | No |
+| Leaderboard | Nice-to-have | No | No |
+| Achievements | Should-have | No | No |
 
 ## 4. Open Product Decisions
 
@@ -242,14 +252,15 @@ The following decisions will be resolved during Requirements Engineering. Where 
 | 4 | Free/Premium division for Statistics and Analysis | Open | Original notation `50/50` retained. |
 | 5 | Free/Premium availability of Tasks and Challenges | Open | Original notation `50/50` retained. |
 | 6 | Free/Premium availability and earning rules for In-game Currency | Open | Original notation `50/50` retained. |
-| 7 | Exact user-facing behavior of Self-promotion | **Deferred 2026-11-11** | Downgraded from Must-have to Should-have, MVP TBD. We could not define its behavior from the original plan; treated as social sharing of milestones / profile links pending a real spec. |
+| 7 | Exact user-facing behavior of Self-promotion | **Deferred 2026-11-11** | Downgraded from Must-have to Should-have, MVP TBD. Treated as social sharing of milestones / profile links pending a real spec. |
 | 8 | Free/Premium treatment of the Shop | Open | Cosmetic-only; no gameplay advantages. |
 | 9 | Meaning of the `50/50` MVP notation for Settings | Open | Original notation retained. |
-| 10 | Star-awarding rules and leaderboard scope | Open | Stars are a score metric, not spendable currency. |
+| 10 | Star-awarding rules | Open | Stars are a score metric, not spendable currency. |
 | 11 | Achievement conditions and which achievements grant currency | Open | Selected achievements may grant currency. |
 | 12 | Initial cosmetic item categories in the Shop | Open | Themes, profile decorations, timer appearance. |
 | 13 | Relationship between levels, stars, achievements, and any XP system | Open | |
-| 14 | Whether the Shop, Stars, and Achievements are part of the first release or later releases | Open | |
+| 14 | Whether the Shop, Stars, and Achievements are part of the first release or later releases | **Decided 2026-11-11** | Stars, Achievements, and Leaderboard are post-MVP (Nice-to-have / Should-have, not in the first release). |
+| 15 | Leaderboard ranking metric and anti-cheat requirements | Open | Nice-to-have, MVP: No. Ranking by star count, solve averages, or challenge results is TBD. |
 
 ## 5. Prioritization Principles
 
