@@ -6,7 +6,7 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft — Product Owner Review Required |
+| Status | Initial Draft |
 | Version | 0.1 |
 | Last Updated | 2026-11-11 |
 | Author | Andrii Severyn |
@@ -115,7 +115,6 @@ The broader product vision includes:
 - In-game currency and a cosmetic shop.
 - Premium subscription.
 - User settings.
-- Self-promotion capability, pending clarification of its intended meaning.
 
 Their release phase and detailed scope are to be determined; listing them here does not imply that all are part of the MVP.
 
@@ -209,27 +208,26 @@ This table defines product areas, not a final technical architecture.
 
 ## 15. Open Questions
 
-The following questions are tracked as TBD decisions. Where a decision has already been made, it is noted with the date and owner.
+The following questions are tracked as TBD decisions. Where a decision has already been made, it is noted with the date.
 
 | # | Question | Status | Note |
 |---|---|---|---|
 | 1 | What exact learning methods and course content are included in the MVP? | Open | |
 | 2 | Is CFOP included in the MVP, and what is the distinction between the CFOP and Full CFOP feature entries? | Open | Two entries partially overlap; course structure must be specified first. |
-| 3 | What does the feature label "Clean Reminder" mean? | Open | Working title only; final name and behaviour unresolved. |
-| 4 | What is the intended meaning and scope of "Self-promotion"? | **Deferred 2026-11-11** | Downgraded from Must-have to Should-have, MVP TBD. Treated as social sharing of milestones / profile links pending a real spec. |
-| 5 | Which statistics are available to free users, and which require Premium? | Open | Original notation `50/50` retained. |
-| 6 | Which challenges or tasks are included in the initial release? | Open | |
-| 7 | How are user levels calculated, and what do they unlock? | Open | |
-| 8 | How are stars awarded, and exactly how do they affect leaderboards? | Open | Stars are a score metric, not spendable currency. |
-| 9 | Which achievements exist, and which achievements award currency? | Open | |
-| 10 | What are the currency earning and spending rules? | Open | |
-| 11 | Which cosmetic items are available in the shop at launch? | Open | |
-| 12 | What is the exact Free/Premium feature and content split? | Open | |
-| 13 | What are the account, profile, and settings requirements? | Open | |
-| 14 | Which languages are supported initially? | Open | |
-| 15 | What administrative tools are required to manage courses, algorithms, and other content? | Open | |
-| 16 | Which timer capabilities and scramble sources are required for the first release? | Open | |
-| 17 | What are the initial success targets and analytics requirements? | Open | Target values and measurement windows to be set before the MVP validation period. |
+| 3 | What is the intended schedule, cadence, and notification channels for Lesson Reminders? | Open | Reminder functionality is intended as a cron-style reminder for users to take lessons. |
+| 4 | Which statistics are available to free users, and which require Premium? | Open | Original notation `50/50` retained. |
+| 5 | Which challenges or tasks are included in the initial release? | Open | |
+| 6 | How are user levels calculated, and what do they unlock? | Open | |
+| 7 | How are stars awarded, and exactly how do they affect leaderboards? | Open | Stars are a score metric, not spendable currency. |
+| 8 | Which achievements exist, and which achievements award currency? | Open | |
+| 9 | What are the currency earning and spending rules? | Open | |
+| 10 | Which cosmetic items are available in the shop at launch? | Open | |
+| 11 | What is the exact Free/Premium feature and content split? | Open | |
+| 12 | What are the account, profile, and settings requirements? | Open | |
+| 13 | Which languages are supported initially? | Open | |
+| 14 | What administrative tools are required to manage courses, algorithms, and other content? | Open | |
+| 15 | Which timer capabilities and scramble sources are required for the first release? | Open | |
+| 16 | What are the initial success targets and analytics requirements? | Open | Target values and measurement windows to be set before the MVP validation period. |
 
 ## 16. Risks and Assumptions
 
@@ -257,4 +255,4 @@ This PRD is ready for approval when:
 
 ---
 
-**Document status:** Initial Draft — requires product-owner review.
+**Document status:** Initial Draft.

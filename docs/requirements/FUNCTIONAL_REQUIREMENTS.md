@@ -6,7 +6,7 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft — Product Owner Review Required |
+| Status | Initial Draft |
 | Version | 0.1 |
 
 ## 2. Purpose
@@ -196,14 +196,14 @@ Admin roles, content approval, audit retention, and operational tooling are TBD.
 
 ## 15. Notifications and Reminders
 
-The Phase 1 inventory contains an item named "Clean Reminder", whose meaning is unclear.
+The Phase 1 inventory contains a "Lesson Reminders" feature: a cron-style reminder that notifies users to take their lessons on a recurring schedule.
 
 | ID | Requirement | Priority |
 |---|---|---|
 | FR-NOT-001 | Reminder and notification functionality MUST NOT be specified beyond confirmed product intent. | TBD |
 | FR-NOT-002 | If notifications are approved, users MUST be able to manage the supported notification preferences. | TBD |
 
-The meaning of "Clean Reminder", notification channels, scheduling, opt-in policy, and reminder cadence require product-owner clarification.
+The reminder schedule/cron cadence, notification channels, opt-in policy, and reminder cadence require clarification.
 
 ## 16. Cross-Cutting Functional Requirements
 
@@ -230,4 +230,4 @@ Requirements map to user stories by functional area:
 - Premium: `US-PRE-*`
 - Administration: `US-ADM-*`
 
-**Document status:** Initial Draft — requires product-owner review.
+**Document status:** Initial Draft.

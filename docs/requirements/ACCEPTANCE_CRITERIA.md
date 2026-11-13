@@ -6,7 +6,7 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft — Product Owner Review Required |
+| Status | Initial Draft |
 | Version | 0.1 |
 | Last Updated | 2026-11-11 |
 | Author | Andrii Severyn |
@@ -264,4 +264,4 @@ The following cannot be finalised until business rules are approved:
 - Community moderation and reporting outcomes.
 - Notification and reminder behaviour.
 
-**Document status:** Initial Draft — requires product-owner review.
+**Document status:** Initial Draft.

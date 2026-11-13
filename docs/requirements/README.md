@@ -1,6 +1,6 @@
 # Cubiland — Phase 2: Requirements Engineering
 
-This package contains the initial draft requirements documents for product-owner review.
+This package contains the initial draft requirements documents .
 
 **Author:** Andrii Severyn · **Last updated:** 2026-11-11
 

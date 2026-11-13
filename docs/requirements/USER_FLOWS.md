@@ -6,7 +6,7 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft — Product Owner Review Required |
+| Status | Initial Draft |
 | Version | 0.1 |
 | Last Updated | 2026-11-11 |
 | Author | Andrii Severyn |
@@ -243,4 +243,4 @@ The following journey-related policies are tracked as TBD.
 | 11 | Settings | User settings, privacy, and account deletion | Open |
 | 12 | Administration | Administrator permissions and content workflows | Open |
 
-**Document status:** Initial Draft — requires product-owner review.
+**Document status:** Initial Draft.

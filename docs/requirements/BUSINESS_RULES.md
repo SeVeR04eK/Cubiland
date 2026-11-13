@@ -6,7 +6,7 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft — Product Owner Review Required |
+| Status | Initial Draft |
 | Version | 0.1 |
 | Last Updated | 2026-11-11 |
 | Author | Andrii Severyn |
@@ -136,23 +136,21 @@ A rule marked **TBD** is intentionally unresolved. It must not be implemented ba
 | BR-COM-002 | Moderation, reporting, blocking, and enforcement policies are **TBD**. |
 | BR-COM-003 | Content visibility and user-generated-content retention rules are **TBD**. |
 
-## 14. Content and Promotion
+## 14. Content and Notifications
 
 | ID | Rule |
 |---|---|
 | BR-CNT-001 | Learning content must be approved and published before being made available to users. |
 | BR-CNT-002 | The source, update frequency, and editorial ownership of speedcubing news are **TBD**. |
-| BR-CNT-003 | The meaning of the feature label "Self-promotion" is unresolved and must be clarified before requirements are defined. |
-| BR-CNT-004 | The meaning of "Clean Reminder" is unresolved and must be clarified before requirements are defined. |
+| BR-CNT-003 | The schedule, cadence, and notification channels for Lesson Reminders are **TBD** and must be clarified before requirements are defined. |
 
 ## 15. Open Decisions Register
 
 | Decision ID | Topic | Current state |
 |---|---|---|
 | DEC-001 | CFOP versus Full CFOP scope | TBD |
-| DEC-002 | "Clean Reminder" meaning | TBD |
-| DEC-003 | "Self-promotion" meaning | TBD |
-| DEC-004 | Stars earning formula and leaderboard impact | TBD |
+| DEC-002 | Lesson Reminders schedule, cadence, and notification channels | TBD |
+| DEC-003 | Stars earning formula and leaderboard impact | TBD |
 | DEC-005 | Currency earning/spending rules | TBD |
 | DEC-006 | Achievement catalogue and rewards | TBD |
 | DEC-007 | Level and XP model | TBD |
@@ -166,4 +164,4 @@ A rule marked **TBD** is intentionally unresolved. It must not be implemented ba
 | DEC-015 | Initial languages | TBD |
 | DEC-016 | Subscription provider and lifecycle policy | TBD |
 
-**Document status:** Initial Draft — requires product-owner review.
+**Document status:** Initial Draft.

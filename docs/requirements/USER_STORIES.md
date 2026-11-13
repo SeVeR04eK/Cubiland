@@ -6,7 +6,7 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft — Product Owner Review Required |
+| Status | Initial Draft |
 | Version | 0.1 |
 | Last Updated | 2026-11-11 |
 | Author | Andrii Severyn |
@@ -152,4 +152,4 @@ Priorities below are provisional and must be reconciled with the approved Phase 
 - Technical tasks should be derived from approved stories and requirements, not substituted for user needs.
 - Acceptance criteria are maintained separately in `ACCEPTANCE_CRITERIA.md`.
 
-**Document status:** Initial Draft — requires product-owner review.
+**Document status:** Initial Draft.

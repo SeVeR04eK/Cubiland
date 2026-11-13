@@ -6,14 +6,14 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft — Product Owner Review Required |
+| Status | Initial Draft |
 | Version | 0.1 |
 | Last Updated | 2026-11-11 |
 | Author | Andrii Severyn |
 
 ## 2. Purpose
 
-This roadmap describes a proposed sequence for product delivery. It is a capability-based planning view, not a committed schedule. Dates, team capacity, estimates, and release commitments are TBD.
+This roadmap describes a proposed sequence for product delivery. It is a capability-based planning view, not a committed schedule. Dates, estimates, and release commitments are TBD.
 
 The roadmap preserves the broader Cubiland product vision while separating the initial MVP from later expansion.
 
@@ -180,8 +180,7 @@ Release order and scope depend on user demand, validation, and product capacity.
 | Languages | F | Initial languages TBD |
 | Speedcubing news | F | Source and editorial model TBD |
 | Other puzzles | F | Product scope TBD |
-| Self-promotion | TBD | Meaning requires clarification |
-| Clean Reminder | TBD | Meaning requires clarification |
+| Lesson Reminders | TBD | Schedule, cadence, and notification channels require clarification |
 
 ## 6. Dependencies
 
@@ -203,7 +202,7 @@ Before any public release, review:
 - Data backup and recovery procedures tested.
 - Monitoring and error reporting available.
 - Content reviewed and published.
-- Support and incident ownership defined.
+- Support arrangements defined.
 - Known limitations and release notes prepared.
 - Rollback or recovery procedure documented.
 
@@ -211,11 +210,11 @@ Before any public release, review:
 
 - MVP feature freeze and exact scope.
 - Release naming and versioning policy.
-- Team size, delivery capacity, and estimates.
+- Delivery capacity and estimates.
 - Target dates and milestones.
 - Beta-testing approach and participant recruitment.
 - Launch regions and supported languages.
 - Premium launch timing and pricing.
 - Analytics targets and go/no-go thresholds.
 
-**Document status:** Initial Draft — requires product-owner review. This roadmap is directional and does not constitute a delivery commitment.
+**Document status:** Initial Draft. This roadmap is directional and does not constitute a delivery commitment.

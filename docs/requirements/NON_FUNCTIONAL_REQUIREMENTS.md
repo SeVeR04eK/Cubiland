@@ -6,7 +6,7 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft — Product Owner Review Required |
+| Status | Initial Draft |
 | Version | 0.1 |
 | Last Updated | 2026-11-11 |
 | Author | Andrii Severyn |
@@ -167,4 +167,4 @@ The following quality attributes and operational constraints are tracked as TBD.
 | 9 | What automated test coverage and quality gates are required? | Open | |
 | 10 | What monitoring, alerting, and support processes are required? | Open | |
 
-**Document status:** Initial Draft — requires product-owner and technical review.
+**Document status:** Initial Draft.

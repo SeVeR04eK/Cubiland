@@ -53,14 +53,14 @@ The table preserves the current product decisions and original prioritization. U
 - **MVP:** No
 - **Premium:** TBD
 
-### 2.5 Learning Reminders (Working Title: Clean Reminder)
+### 2.5 Lesson Reminders
 
-- **Description:** Reminder functionality intended to encourage users to return to lessons or learning activities.
-- **User value:** Support regular learning and practice habits.
+- **Description:** Scheduled reminder functionality that notifies users to take their lessons on a recurring, cron-style basis.
+- **User value:** Support regular learning habits by reminding users to return to their lessons.
 - **Priority:** Should-have
 - **MVP:** No
 - **Premium:** No
-- **Open decision:** Confirm the final feature name and whether reminders apply to lessons, training sessions, or both.
+- **Open decision:** Confirm the final feature name, reminder schedule/cadence, and notification channels.
 
 ### 2.6 Full CFOP
 
@@ -152,16 +152,7 @@ The table preserves the current product decisions and original prioritization. U
 - **Premium:** 50/50 — original notation retained; exact availability for Free and Premium users is an open decision.
 - **Product rule:** Currency is separate from stars. It is intended for cosmetic purchases and does not provide gameplay or learning advantages.
 
-### 2.17 Self-promotion
-
-- **Description:** A feature retained from the original product plan for sharing personal solving milestones or social links.
-- **User value:** Allow users to share achievements and connect with the wider speedcubing community.
-- **Priority:** Should-have
-- **MVP:** TBD
-- **Premium:** No
-- **Open decision:** Define whether this refers to social share cards (sharing PBs/milestones) or user profile links, and finalize its MVP inclusion.
-
-### 2.18 Shop
+### 2.17 Shop
 
 - **Description:** In-platform shop where users can spend earned in-game currency on cosmetic items, such as interface themes, profile decorations, and timer appearance customizations.
 - **User value:** Allow users to personalize their experience and enjoy optional rewards.
@@ -220,7 +211,7 @@ The table preserves the current product decisions and original prioritization. U
 | 3×3×3 Beginner Course | Must-have | Yes | No |
 | 3×3×3 CFOP | Should-have | Yes / Inc. | No |
 | Other Courses | Nice-to-have | No | TBD |
-| Learning Reminders | Should-have | No | No |
+| Lesson Reminders | Should-have | No | No |
 | Full CFOP | Must-have | TBD | TBD |
 | Timer | Must-have | Yes | No |
 | Statistics and Analysis | Must-have | Yes | 50/50 |
@@ -232,7 +223,6 @@ The table preserves the current product decisions and original prioritization. U
 | News of the Speedcubing World | Nice-to-have | No | No |
 | Premium Lessons | Should-have | No | Yes |
 | In-game Currency | Must-have | Yes | 50/50 |
-| Self-promotion | Should-have | TBD | No |
 | Shop | Nice-to-have | No | TBD |
 | Competitions | Nice-to-have | No | No |
 | Settings | Must-have | 50/50 | No |
@@ -242,25 +232,24 @@ The table preserves the current product decisions and original prioritization. U
 
 ## 4. Open Product Decisions
 
-The following decisions will be resolved during Requirements Engineering. Where a decision has already been made, it is noted with the date and owner.
+The following decisions will be resolved during Requirements Engineering. Where a decision has already been made, it is noted with the date.
 
 | # | Decision | Status | Note |
 |---|---|---|---|
-| 1 | Final name and behavior of Learning Reminders | Open | Working title "Clean Reminder" is provisional. |
+| 1 | Final name, schedule, and behavior of Lesson Reminders | Open | Reminder functionality is intended as a cron-style reminder for users to take lessons. |
 | 2 | Relationship between the 3×3×3 CFOP course and Full CFOP | Open | Two entries partially overlap; course structure must be specified first. |
 | 3 | Meaning of the original `Inc.` notation and exact CFOP MVP scope | Open | Original notation retained to preserve provenance. |
 | 4 | Free/Premium division for Statistics and Analysis | Open | Original notation `50/50` retained. |
 | 5 | Free/Premium availability of Tasks and Challenges | Open | Original notation `50/50` retained. |
 | 6 | Free/Premium availability and earning rules for In-game Currency | Open | Original notation `50/50` retained. |
-| 7 | Exact user-facing behavior of Self-promotion | **Deferred 2026-11-11** | Downgraded from Must-have to Should-have, MVP TBD. Treated as social sharing of milestones / profile links pending a real spec. |
-| 8 | Free/Premium treatment of the Shop | Open | Cosmetic-only; no gameplay advantages. |
-| 9 | Meaning of the `50/50` MVP notation for Settings | Open | Original notation retained. |
-| 10 | Star-awarding rules | Open | Stars are a score metric, not spendable currency. |
-| 11 | Achievement conditions and which achievements grant currency | Open | Selected achievements may grant currency. |
-| 12 | Initial cosmetic item categories in the Shop | Open | Themes, profile decorations, timer appearance. |
-| 13 | Relationship between levels, stars, achievements, and any XP system | Open | |
-| 14 | Whether the Shop, Stars, and Achievements are part of the first release or later releases | **Decided 2026-11-11** | Stars, Achievements, and Leaderboard are post-MVP (Nice-to-have / Should-have, not in the first release). |
-| 15 | Leaderboard ranking metric and anti-cheat requirements | Open | Nice-to-have, MVP: No. Ranking by star count, solve averages, or challenge results is TBD. |
+| 7 | Free/Premium treatment of the Shop | Open | Cosmetic-only; no gameplay advantages. |
+| 8 | Meaning of the `50/50` MVP notation for Settings | Open | Original notation retained. |
+| 9 | Star-awarding rules | Open | Stars are a score metric, not spendable currency. |
+| 10 | Achievement conditions and which achievements grant currency | Open | Selected achievements may grant currency. |
+| 11 | Initial cosmetic item categories in the Shop | Open | Themes, profile decorations, timer appearance. |
+| 12 | Relationship between levels, stars, achievements, and any XP system | Open | |
+| 13 | Whether the Shop, Stars, and Achievements are part of the first release or later releases | **Decided 2026-11-11** | Stars, Achievements, and Leaderboard are post-MVP (Nice-to-have / Should-have, not in the first release). |
+| 14 | Leaderboard ranking metric and anti-cheat requirements | Open | Nice-to-have, MVP: No. Ranking by star count, solve averages, or challenge results is TBD. |
 
 ## 5. Prioritization Principles
 

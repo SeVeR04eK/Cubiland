@@ -84,7 +84,6 @@ The current MVP plan includes the following capabilities:
 | Timer | Included | Measure solving times during practice |
 | Statistics and analysis | Included | Review solving performance and progress |
 | In-game currency | Marked for MVP | Support the planned reward system; detailed rules to be specified |
-| Self-promotion | TBD pending definition | Optional sharing of personal milestones or profile links |
 | Settings | MVP notation is `50/50` | Core settings and initial release scope to be specified |
 
 Training plans and practice sessions are part of the core product concept. Their detailed MVP behavior will be defined in Requirements Engineering.
@@ -177,7 +176,7 @@ Target values and measurement windows will be defined before the MVP validation 
 
 ## 11. Scope Decisions to Finalize
 
-The following items will be resolved during Requirements Engineering. Items already settled are noted with the date and owner.
+The following items will be resolved during Requirements Engineering. Items already settled are noted with the date.
 
 | # | Decision | Status | Note |
 |---|---|---|---|
@@ -187,7 +186,6 @@ The following items will be resolved during Requirements Engineering. Items alre
 | 4 | Basic and advanced scope of statistics | Open | |
 | 5 | MVP behavior of training plans and practice sessions | Open | |
 | 6 | Initial behavior of stars, achievements, currency, and levels | Open | |
-| 7 | Meaning and behavior of the Self-promotion feature | **Deferred 2026-11-11** | Downgraded to Should-have, MVP TBD. Treated as social sharing of milestones / profile links pending a real spec. |
-| 8 | MVP scope of Settings | Open | Original notation `50/50` retained. |
+| 7 | MVP scope of Settings | Open | Original notation `50/50` retained. |
 | 9 | Free/Premium boundaries and subscription benefits | Open | |
 | 10 | Numerical MVP success targets | Open | Target values and measurement windows to be set before the MVP validation period. |
