@@ -6,8 +6,8 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft |
-| Version | 0.1 |
+| Status | Updated Draft |
+| Version | 0.2 |
 
 ## 2. Purpose
 
@@ -113,33 +113,37 @@ Exact statistics (for example, average types, best, worst, median, trend windows
 
 ## 9. Progression, Stars, and Achievements
 
+**Decision confirmed 2026-11-22:** Stars, achievements, progression levels, and leaderboards are explicitly excluded from the MVP. The requirements in this section are retained for future phase planning.
+
 | ID | Requirement | Priority |
 |---|---|---|
-| FR-GAM-001 | The system MUST maintain stars separately from spendable in-game currency. | MUST |
-| FR-GAM-002 | The system MUST award stars only when an approved star-award rule is satisfied. | TBD |
-| FR-GAM-003 | The system SHOULD provide an achievement catalogue and user achievement status. | TBD |
-| FR-GAM-004 | The system MUST prevent the same one-time achievement reward from being granted more than once. | MUST |
-| FR-GAM-005 | The system MUST maintain a separate in-game currency balance for each eligible user. | TBD |
-| FR-GAM-006 | The system MUST record currency grants and deductions as traceable transactions. | MUST |
-| FR-GAM-007 | The system MUST grant currency only for approved reward events. | TBD |
-| FR-GAM-008 | The system SHOULD display user progression level and relevant progress. | TBD |
-| FR-GAM-009 | The system MUST apply approved leaderboard eligibility and ranking rules when displaying rankings. | TBD |
-| FR-GAM-010 | The system MUST prevent cosmetic purchases from changing gameplay outcomes or competitive performance. | MUST |
+| FR-GAM-001 | The system MUST maintain stars separately from spendable in-game currency. | TBD (Post-MVP) |
+| FR-GAM-002 | The system MUST award stars only when an approved star-award rule is satisfied. | TBD (Post-MVP) |
+| FR-GAM-003 | The system SHOULD provide an achievement catalogue and user achievement status. | TBD (Post-MVP) |
+| FR-GAM-004 | The system MUST prevent the same one-time achievement reward from being granted more than once. | TBD (Post-MVP) |
+| FR-GAM-005 | The system MUST maintain a separate in-game currency balance for each eligible user. | TBD (Post-MVP) |
+| FR-GAM-006 | The system MUST record currency grants and deductions as traceable transactions. | TBD (Post-MVP) |
+| FR-GAM-007 | The system MUST grant currency only for approved reward events. | TBD (Post-MVP) |
+| FR-GAM-008 | The system SHOULD display user progression level and relevant progress. | TBD (Post-MVP) |
+| FR-GAM-009 | The system MUST apply approved leaderboard eligibility and ranking rules when displaying rankings. | TBD (Post-MVP) |
+| FR-GAM-010 | The system MUST prevent cosmetic purchases from changing gameplay outcomes or competitive performance. | TBD (Post-MVP) |
 
 Level formula, XP existence, star-award rules, achievement catalogue, reward values, and leaderboard rules are TBD.
 
 ## 10. Cosmetic Shop
 
+**Decision confirmed 2026-11-22:** The cosmetic shop is explicitly excluded from the MVP. The requirements in this section are retained for future phase planning.
+
 | ID | Requirement | Priority |
 |---|---|---|
-| FR-SHP-001 | The system COULD display a catalogue of available cosmetic items. | COULD |
-| FR-SHP-002 | The system COULD display item price, availability, and ownership state. | COULD |
-| FR-SHP-003 | The system MUST verify sufficient currency before completing a currency purchase. | MUST |
-| FR-SHP-004 | The system MUST deduct currency and grant the purchased item atomically or provide equivalent transactional guarantees. | MUST |
-| FR-SHP-005 | The system MUST prevent duplicate ownership or duplicate charging where items are non-repeatable. | MUST |
-| FR-SHP-006 | The system MUST prevent a purchase if the item is unavailable or the balance is insufficient. | MUST |
-| FR-SHP-007 | The system SHOULD allow a user to equip or apply owned cosmetics where applicable. | SHOULD |
-| FR-SHP-008 | The system MUST restrict shop items to cosmetic effects under the current product principle. | MUST |
+| FR-SHP-001 | The system COULD display a catalogue of available cosmetic items. | TBD (Post-MVP) |
+| FR-SHP-002 | The system COULD display item price, availability, and ownership state. | TBD (Post-MVP) |
+| FR-SHP-003 | The system MUST verify sufficient currency before completing a currency purchase. | TBD (Post-MVP) |
+| FR-SHP-004 | The system MUST deduct currency and grant the purchased item atomically or provide equivalent transactional guarantees. | TBD (Post-MVP) |
+| FR-SHP-005 | The system MUST prevent duplicate ownership or duplicate charging where items are non-repeatable. | TBD (Post-MVP) |
+| FR-SHP-006 | The system MUST prevent a purchase if the item is unavailable or the balance is insufficient. | TBD (Post-MVP) |
+| FR-SHP-007 | The system SHOULD allow a user to equip or apply owned cosmetics where applicable. | TBD (Post-MVP) |
+| FR-SHP-008 | The system MUST restrict shop items to cosmetic effects under the current product principle. | TBD (Post-MVP) |
 
 Catalogue, pricing, repeatability, refunds, gifting, and equipped-item limits are TBD.
 
@@ -169,14 +173,16 @@ Initial languages, content sources, editorial process, and localisation scope ar
 
 ## 13. Premium and Entitlements
 
+**Decision confirmed 2026-11-22:** Premium subscriptions and payment integration are explicitly excluded from the MVP. The requirements in this section are retained for future phase planning. The provisional preferred payment solution for a future monetization phase is Stripe with Stripe Billing.
+
 | ID | Requirement | Priority |
 |---|---|---|
-| FR-PRE-001 | The system MUST represent whether an account has an active Premium entitlement. | MUST |
-| FR-PRE-002 | The system MUST check entitlement before granting access to Premium-restricted resources. | MUST |
-| FR-PRE-003 | The system MUST distinguish Free access from Premium access according to an approved feature matrix. | MUST |
-| FR-PRE-004 | The system MUST update entitlement state based on trusted subscription status information. | MUST |
-| FR-PRE-005 | The system MUST handle entitlement expiration or cancellation according to an approved policy. | MUST |
-| FR-PRE-006 | The system SHOULD explain the access requirement when a user attempts to open Premium-restricted content. | SHOULD |
+| FR-PRE-001 | The system MUST represent whether an account has an active Premium entitlement. | TBD (Post-MVP) |
+| FR-PRE-002 | The system MUST check entitlement before granting access to Premium-restricted resources. | TBD (Post-MVP) |
+| FR-PRE-003 | The system MUST distinguish Free access from Premium access according to an approved feature matrix. | TBD (Post-MVP) |
+| FR-PRE-004 | The system MUST update entitlement state based on trusted subscription status information. | TBD (Post-MVP) |
+| FR-PRE-005 | The system MUST handle entitlement expiration or cancellation according to an approved policy. | TBD (Post-MVP) |
+| FR-PRE-006 | The system SHOULD explain the access requirement when a user attempts to open Premium-restricted content. | TBD (Post-MVP) |
 
 Payment provider, subscription plans, pricing, trials, grace periods, refunds, cancellation UX, and regional rules are TBD.
 

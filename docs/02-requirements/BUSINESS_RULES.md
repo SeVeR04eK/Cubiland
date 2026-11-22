@@ -6,9 +6,9 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft |
-| Version | 0.1 |
-| Last Updated | 2026-11-11 |
+| Status | Updated Draft |
+| Version | 0.2 |
+| Last Updated | 2026-11-22 |
 | Author | Andrii Severyn |
 
 ## 2. Purpose
@@ -41,10 +41,10 @@ A rule marked **TBD** is intentionally unresolved. It must not be implemented ba
 | ID | Rule |
 |---|---|
 | BR-LRN-001 | The initial learning focus is the 3×3×3 cube. |
-| BR-LRN-002 | The beginner course is part of the current MVP candidate scope. |
+| BR-LRN-002 | The beginner course is part of the confirmed MVP scope. |
 | BR-LRN-003 | A user may access a course or lesson only if it is published and the user has the required entitlement. |
 | BR-LRN-004 | Course order, prerequisites, lesson completion conditions, and ability to revisit completed lessons are **TBD**. |
-| BR-LRN-005 | The distinction and release scope of the CFOP and Full CFOP feature entries are **TBD**. |
+| BR-LRN-005 | **Decision confirmed 2026-11-22:** CFOP and Full CFOP are explicitly excluded from the MVP. They will be considered for future phases. |
 | BR-LRN-006 | Additional puzzle types and methods may be added in later product stages; exact scope is **TBD**. |
 
 ## 6. Solve and Statistics Rules
@@ -72,6 +72,8 @@ A rule marked **TBD** is intentionally unresolved. It must not be implemented ba
 
 ## 8. In-Game Currency
 
+**Decision confirmed 2026-11-22:** In-game currency is explicitly excluded from the MVP. The rules in this section are retained for future phase planning.
+
 | ID | Rule |
 |---|---|
 | BR-CUR-001 | In-game currency is a separate system from stars. |
@@ -86,6 +88,8 @@ A rule marked **TBD** is intentionally unresolved. It must not be implemented ba
 
 ## 9. Achievements and Levels
 
+**Decision confirmed 2026-11-22:** Stars, achievements, and progression levels are explicitly excluded from the MVP. The rules in this section are retained for future phase planning.
+
 | ID | Rule |
 |---|---|
 | BR-ACH-001 | Achievements recognise defined user milestones or accomplishments. |
@@ -98,6 +102,8 @@ A rule marked **TBD** is intentionally unresolved. It must not be implemented ba
 
 ## 10. Cosmetic Shop
 
+**Decision confirmed 2026-11-22:** The cosmetic shop is explicitly excluded from the MVP. The rules in this section are retained for future phase planning.
+
 | ID | Rule |
 |---|---|
 | BR-SHP-001 | The shop is intended for cosmetic items only. |
@@ -108,6 +114,8 @@ A rule marked **TBD** is intentionally unresolved. It must not be implemented ba
 | BR-SHP-006 | Item catalogue, price, ownership limits, equip rules, refunds, and gifting are **TBD**. |
 
 ## 11. Free and Premium Rules
+
+**Decision confirmed 2026-11-22:** Premium subscriptions and payment integration are explicitly excluded from the MVP. The rules in this section are retained for future phase planning. The provisional preferred payment solution for a future monetization phase is Stripe with Stripe Billing.
 
 | ID | Rule |
 |---|---|
@@ -148,20 +156,20 @@ A rule marked **TBD** is intentionally unresolved. It must not be implemented ba
 
 | Decision ID | Topic | Current state |
 |---|---|---|
-| DEC-001 | CFOP versus Full CFOP scope | TBD |
+| DEC-001 | CFOP versus Full CFOP scope | **Decided 2026-11-22** | Both excluded from MVP. |
 | DEC-002 | Lesson Reminders schedule, cadence, and notification channels | TBD |
-| DEC-003 | Stars earning formula and leaderboard impact | TBD |
-| DEC-005 | Currency earning/spending rules | TBD |
-| DEC-006 | Achievement catalogue and rewards | TBD |
-| DEC-007 | Level and XP model | TBD |
-| DEC-008 | Free/Premium feature matrix | TBD |
+| DEC-003 | Stars earning formula and leaderboard impact | **Decided 2026-11-22** | Excluded from MVP. |
+| DEC-005 | Currency earning/spending rules | **Decided 2026-11-22** | Excluded from MVP. |
+| DEC-006 | Achievement catalogue and rewards | **Decided 2026-11-22** | Excluded from MVP. |
+| DEC-007 | Level and XP model | **Decided 2026-11-22** | Excluded from MVP. |
+| DEC-008 | Free/Premium feature matrix | **Decided 2026-11-22** | Premium excluded from MVP. |
 | DEC-009 | Statistics included in Free and Premium | TBD |
-| DEC-010 | Shop catalogue and prices | TBD |
+| DEC-010 | Shop catalogue and prices | **Decided 2026-11-22** | Excluded from MVP. |
 | DEC-011 | Solve penalties and DNF treatment | TBD |
-| DEC-012 | Competition and leaderboard rules | TBD |
+| DEC-012 | Competition and leaderboard rules | **Decided 2026-11-22** | Excluded from MVP. |
 | DEC-013 | Challenge formats and rewards | TBD |
 | DEC-014 | Community moderation policy | TBD |
 | DEC-015 | Initial languages | TBD |
-| DEC-016 | Subscription provider and lifecycle policy | TBD |
+| DEC-016 | Subscription provider and lifecycle policy | **Decided 2026-11-22** | Premium excluded from MVP; Stripe is provisional future choice. |
 
 **Document status:** Initial Draft.

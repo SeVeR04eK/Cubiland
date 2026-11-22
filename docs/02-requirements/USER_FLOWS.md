@@ -6,9 +6,9 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft |
-| Version | 0.1 |
-| Last Updated | 2026-11-11 |
+| Status | Updated Draft |
+| Version | 0.2 |
+| Last Updated | 2026-11-22 |
 | Author | Andrii Severyn |
 
 ## 2. Purpose
@@ -133,6 +133,8 @@ Available statistics, filtering dimensions, aggregation rules, and Premium restr
 
 ## 11. Flow: Progression, Stars, and Achievements
 
+**Decision confirmed 2026-11-22:** Stars, achievements, progression levels, and leaderboards are explicitly excluded from the MVP. This flow is retained for future phase planning.
+
 1. User completes an eligible activity or reaches a milestone.
 2. System evaluates the relevant progression and achievement rules.
 3. System records the eligible result.
@@ -144,6 +146,8 @@ Available statistics, filtering dimensions, aggregation rules, and Premium restr
 Stars must not be treated as spendable currency. Duplicate awards, reversals, and reward idempotency rules are specified in `BUSINESS_RULES.md`.
 
 ## 12. Flow: Cosmetic Shop
+
+**Decision confirmed 2026-11-22:** The cosmetic shop is explicitly excluded from the MVP. This flow is retained for future phase planning.
 
 1. User opens the shop.
 2. System displays available cosmetic items and their prices.
@@ -162,6 +166,8 @@ Stars must not be treated as spendable currency. Duplicate awards, reversals, an
 Only cosmetic items are intended for the shop. Exact catalogue, pricing, refunds, gifting, and ownership rules are TBD.
 
 ## 13. Flow: Free and Premium Access
+
+**Decision confirmed 2026-11-22:** Premium subscriptions and payment integration are explicitly excluded from the MVP. This flow is retained for future phase planning. The provisional preferred payment solution for a future monetization phase is Stripe with Stripe Billing.
 
 1. User requests a course, lesson, feature, or other gated resource.
 2. System checks the user's current entitlement.
@@ -236,9 +242,9 @@ The following journey-related policies are tracked as TBD.
 | 4 | Practice | Algorithm practice modes and mastery criteria | Open |
 | 5 | Timer | Timer controls, penalties, scramble source, and offline support | Open |
 | 6 | History | Solve edit/delete policy and statistical recalculation | Open |
-| 7 | Progression | Stars, levels, achievement, and currency calculation | Open |
-| 8 | Shop | Shop catalogue, purchase confirmation, and refund policy | Open |
-| 9 | Monetisation | Free/Premium entitlement matrix and subscription lifecycle | Open |
+| 7 | Progression | Stars, levels, achievement, and currency calculation | **Decided 2026-11-22** | Excluded from MVP; retained for future phase. |
+| 8 | Shop | Shop catalogue, purchase confirmation, and refund policy | **Decided 2026-11-22** | Excluded from MVP; retained for future phase. |
+| 9 | Monetisation | Free/Premium entitlement matrix and subscription lifecycle | **Decided 2026-11-22** | Excluded from MVP; retained for future phase. |
 | 10 | Social | Challenge, competition, and community scope | Open |
 | 11 | Settings | User settings, privacy, and account deletion | Open |
 | 12 | Administration | Administrator permissions and content workflows | Open |

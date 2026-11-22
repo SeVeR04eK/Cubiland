@@ -6,9 +6,9 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft |
-| Version | 0.1 |
-| Last Updated | 2026-11-11 |
+| Status | Updated Draft |
+| Version | 0.2 |
+| Last Updated | 2026-11-22 |
 | Author | Andrii Severyn |
 
 ## 2. Product Overview
@@ -41,7 +41,7 @@ Primary audience segments:
 3. **Intermediate speedcubers** — people who want to improve solving times, practise algorithms, and analyse performance.
 4. **Advanced speedcubers** — experienced users who may benefit from structured drills, detailed statistics, challenges, and competitive features.
 
-Personas and audience assumptions are documented in `../product-discovery/TARGET_AUDIENCE.md`.
+Personas and audience assumptions are documented in `../01-product-discovery`.
 
 ## 6. Product Goals
 
@@ -87,16 +87,24 @@ Detailed flows, including alternative and error paths, are documented in `USER_F
 
 ### 8.1 MVP Candidate Scope
 
-The current MVP candidate scope includes:
+The confirmed MVP scope includes:
 - User registration, authentication, and profile.
 - A beginner 3×3×3 course.
 - A 3×3×3 solving timer.
 - Solve history.
 - Core statistics and performance analysis.
 - Essential settings required by the MVP.
-- Initial in-game currency support, subject to detailed rules.
 
-The exact MVP boundary must be confirmed against the Phase 1 `MVP_DEFINITION.md` and `FEATURE_PRIORITIZATION.md`. Unresolved scope decisions remain TBD until explicitly approved.
+**Explicitly excluded from MVP:**
+- 3×3×3 CFOP and Full CFOP courses.
+- In-game currency and cosmetic shop.
+- Stars, achievements, and progression levels.
+- Leaderboards.
+- Practice challenges and challenge-based training modes.
+- Premium subscriptions and Premium features.
+- Payment integration.
+
+The MVP boundary is confirmed against the Phase 1 `MVP_DEFINITION.md` and `FEATURE_PRIORITIZATION.md` (decisions confirmed 2026-11-22).
 
 ### 8.2 Planned Product Capabilities
 
@@ -136,12 +144,16 @@ Detailed rules are specified in `BUSINESS_RULES.md`.
 - The shop is intended for cosmetic items, such as themes, profile decorations, and timer appearance.
 - Cosmetic purchases must not provide gameplay advantages.
 
+**Decision confirmed 2026-11-22:** In-game currency is explicitly excluded from the MVP and will be considered for a later phase.
+
 ### 9.3 Achievements and Levels
 
 - Achievements recognise defined user milestones or accomplishments.
 - Selected achievements may award in-game currency.
 - Levels are part of the progression experience.
 - The exact relationship between levels, experience points, stars, achievements, course access, and rewards is TBD.
+
+**Decision confirmed 2026-11-22:** Stars, achievements, and progression levels are explicitly excluded from the MVP and will be considered for a later phase.
 
 ## 10. Monetisation
 
@@ -155,6 +167,8 @@ The product must define:
 - what happens when a subscription expires or is cancelled.
 
 The exact feature split, subscription plans, prices, billing intervals, trial policy, and regional availability are TBD. No specific paywall behaviour should be implemented until these decisions are approved.
+
+**Decision confirmed 2026-11-22:** Premium subscriptions and payment integration are explicitly excluded from the MVP. The provisional preferred payment solution for a future monetization phase is Stripe with Stripe Billing, but this is not an MVP requirement.
 
 ## 11. User and System Roles
 
@@ -212,18 +226,18 @@ The following questions are tracked as TBD decisions. Where a decision has alrea
 
 | # | Question | Status | Note |
 |---|---|---|---|
-| 1 | What exact learning methods and course content are included in the MVP? | Open | |
-| 2 | Is CFOP included in the MVP, and what is the distinction between the CFOP and Full CFOP feature entries? | Open | Two entries partially overlap; course structure must be specified first. |
+| 1 | What exact learning methods and course content are included in the MVP? | **Decided 2026-11-22** | Only the beginner 3×3×3 course is included in MVP. CFOP is excluded. |
+| 2 | Is CFOP included in the MVP, and what is the distinction between the CFOP and Full CFOP feature entries? | **Decided 2026-11-22** | Both CFOP and Full CFOP are excluded from MVP. |
 | 3 | What is the intended schedule, cadence, and notification channels for Lesson Reminders? | Open | Reminder functionality is intended as a cron-style reminder for users to take lessons. |
 | 4 | Which statistics are available to free users, and which require Premium? | Open | Original notation `50/50` retained. |
-| 5 | Which challenges or tasks are included in the initial release? | Open | |
-| 6 | How are user levels calculated, and what do they unlock? | Open | |
-| 7 | How are stars awarded, and exactly how do they affect leaderboards? | Open | Stars are a score metric, not spendable currency. |
-| 8 | Which achievements exist, and which achievements award currency? | Open | |
-| 9 | What are the currency earning and spending rules? | Open | |
-| 10 | Which cosmetic items are available in the shop at launch? | Open | |
-| 11 | What is the exact Free/Premium feature and content split? | Open | |
-| 12 | What are the account, profile, and settings requirements? | Open | |
+| 5 | Which challenges or tasks are included in the initial release? | **Decided 2026-11-22** | Practice challenges are excluded from MVP. |
+| 6 | How are user levels calculated, and what do they unlock? | **Decided 2026-11-22** | Levels are excluded from MVP. |
+| 7 | How are stars awarded, and exactly how do they affect leaderboards? | **Decided 2026-11-22** | Stars are excluded from MVP. |
+| 8 | Which achievements exist, and which achievements award currency? | **Decided 2026-11-22** | Achievements are excluded from MVP. |
+| 9 | What are the currency earning and spending rules? | **Decided 2026-11-22** | Currency is excluded from MVP. |
+| 10 | Which cosmetic items are available in the shop at launch? | **Decided 2026-11-22** | Shop is excluded from MVP. |
+| 11 | What is the exact Free/Premium feature and content split? | Open | Premium is excluded from MVP. |
+| 12 | What are the account, profile, and settings requirements? | Open | Only essential settings included in MVP. |
 | 13 | Which languages are supported initially? | Open | |
 | 14 | What administrative tools are required to manage courses, algorithms, and other content? | Open | |
 | 15 | Which timer capabilities and scramble sources are required for the first release? | Open | |

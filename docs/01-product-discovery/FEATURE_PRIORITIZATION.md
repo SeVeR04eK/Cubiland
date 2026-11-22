@@ -1,8 +1,8 @@
 # Feature Prioritization
 
-**Document status:** Product feature inventory and initial prioritization  
-**Version:** 1.0  
-**Last updated:** 2026-11-11  
+**Document status:** Product feature inventory and prioritization  
+**Version:** 1.1  
+**Last updated:** 2026-11-22  
 **Author:** Andrii Severyn
 
 ## 1. Purpose and Prioritization Model
@@ -42,8 +42,9 @@ The table preserves the current product decisions and original prioritization. U
 - **Description:** Course content covering the CFOP advanced solving method.
 - **User value:** Help users progress beyond beginner solving.
 - **Priority:** Should-have
-- **MVP:** Yes / Inc. — original notation retained; exact scope is an open decision.
-- **Premium:** No
+- **MVP:** **No** — CFOP is explicitly excluded from the MVP.
+- **Premium:** TBD for future release
+- **Decision confirmed 2026-11-22:** CFOP is not part of the MVP and will be considered for a later phase.
 
 ### 2.4 Other Courses
 
@@ -67,9 +68,9 @@ The table preserves the current product decisions and original prioritization. U
 - **Description:** Full CFOP learning content. The initial feature notes associate this item with an approximate sub-20 solving goal.
 - **User value:** Support advanced method learning and continued performance improvement.
 - **Priority:** Must-have
-- **MVP:** TBD
-- **Premium:** TBD
-- **Open decision:** Define whether Full CFOP is a separate course, the complete version of the 3×3×3 CFOP course, or a distinct learning tier.
+- **MVP:** **No** — Full CFOP is explicitly excluded from the MVP.
+- **Premium:** TBD for future release
+- **Decision confirmed 2026-11-22:** Full CFOP is not part of the MVP and will be considered for a later phase.
 
 ### 2.7 Timer
 
@@ -147,8 +148,8 @@ The table preserves the current product decisions and original prioritization. U
 
 - **Description:** Virtual currency awarded occasionally for selected achievements or milestones. Users can spend earned currency in the in-platform shop.
 - **User value:** Provide an additional reward loop and support cosmetic personalization.
-- **Priority:** Must-have
-- **MVP:** Yes
+- **Priority:** Nice-to-have
+- **MVP:** No
 - **Premium:** 50/50 — original notation retained; exact availability for Free and Premium users is an open decision.
 - **Product rule:** Currency is separate from stars. It is intended for cosmetic purchases and does not provide gameplay or learning advantages.
 
@@ -174,8 +175,9 @@ The table preserves the current product decisions and original prioritization. U
 - **Description:** User settings. The initial plan specifically references language selection.
 - **User value:** Allow users to configure their platform experience.
 - **Priority:** Must-have
-- **MVP:** 50/50 — original notation retained; exact MVP scope is an open decision.
+- **MVP:** **Partial** — Only essential settings are included in the MVP.
 - **Premium:** No
+- **Note:** The MVP includes only a limited set of the most important settings. Comprehensive settings will be defined for future releases.
 
 ### 2.21 Stars
 
@@ -209,10 +211,10 @@ The table preserves the current product decisions and original prioritization. U
 |---|---|---|---|
 | User Profile | Must-have | Yes | No |
 | 3×3×3 Beginner Course | Must-have | Yes | No |
-| 3×3×3 CFOP | Should-have | Yes / Inc. | No |
+| 3×3×3 CFOP | Should-have | **No** | TBD |
 | Other Courses | Nice-to-have | No | TBD |
 | Lesson Reminders | Should-have | No | No |
-| Full CFOP | Must-have | TBD | TBD |
+| Full CFOP | Must-have | **No** | TBD |
 | Timer | Must-have | Yes | No |
 | Statistics and Analysis | Must-have | Yes | 50/50 |
 | Community Chat | Nice-to-have | No | No |
@@ -222,10 +224,10 @@ The table preserves the current product decisions and original prioritization. U
 | Languages | Nice-to-have | No | No |
 | News of the Speedcubing World | Nice-to-have | No | No |
 | Premium Lessons | Should-have | No | Yes |
-| In-game Currency | Must-have | Yes | 50/50 |
+| In-game Currency | Nice-to-have | **No** | 50/50 |
 | Shop | Nice-to-have | No | TBD |
 | Competitions | Nice-to-have | No | No |
-| Settings | Must-have | 50/50 | No |
+| Settings | Must-have | **Partial** | No |
 | Stars | Should-have | No | No |
 | Leaderboard | Nice-to-have | No | No |
 | Achievements | Should-have | No | No |
@@ -237,18 +239,18 @@ The following decisions will be resolved during Requirements Engineering. Where 
 | # | Decision | Status | Note |
 |---|---|---|---|
 | 1 | Final name, schedule, and behavior of Lesson Reminders | Open | Reminder functionality is intended as a cron-style reminder for users to take lessons. |
-| 2 | Relationship between the 3×3×3 CFOP course and Full CFOP | Open | Two entries partially overlap; course structure must be specified first. |
-| 3 | Meaning of the original `Inc.` notation and exact CFOP MVP scope | Open | Original notation retained to preserve provenance. |
+| 2 | Relationship between the 3×3×3 CFOP course and Full CFOP | **Decided 2026-11-22** | Both are excluded from MVP and planned for future phases. |
+| 3 | Meaning of the original `Inc.` notation and exact CFOP MVP scope | **Decided 2026-11-22** | CFOP is excluded from MVP. |
 | 4 | Free/Premium division for Statistics and Analysis | Open | Original notation `50/50` retained. |
 | 5 | Free/Premium availability of Tasks and Challenges | Open | Original notation `50/50` retained. |
 | 6 | Free/Premium availability and earning rules for In-game Currency | Open | Original notation `50/50` retained. |
 | 7 | Free/Premium treatment of the Shop | Open | Cosmetic-only; no gameplay advantages. |
-| 8 | Meaning of the `50/50` MVP notation for Settings | Open | Original notation retained. |
+| 8 | Meaning of the `50/50` MVP notation for Settings | **Decided 2026-11-22** | Only essential settings included in MVP. |
 | 9 | Star-awarding rules | Open | Stars are a score metric, not spendable currency. |
 | 10 | Achievement conditions and which achievements grant currency | Open | Selected achievements may grant currency. |
 | 11 | Initial cosmetic item categories in the Shop | Open | Themes, profile decorations, timer appearance. |
 | 12 | Relationship between levels, stars, achievements, and any XP system | Open | |
-| 13 | Whether the Shop, Stars, and Achievements are part of the first release or later releases | **Decided 2026-11-11** | Stars, Achievements, and Leaderboard are post-MVP (Nice-to-have / Should-have, not in the first release). |
+| 13 | Whether the Shop, Stars, and Achievements are part of the first release or later releases | **Decided 2026-11-22** | Stars, Achievements, Currency, and Shop are excluded from MVP. |
 | 14 | Leaderboard ranking metric and anti-cheat requirements | Open | Nice-to-have, MVP: No. Ranking by star count, solve averages, or challenge results is TBD. |
 
 ## 5. Prioritization Principles

@@ -6,7 +6,7 @@ This package contains the initial draft requirements documents .
 
 ## How These Documents Relate
 
-The product-discovery set (`../product-discovery/`) defines *why* we're building this and *what we believe is true*. These requirements documents define *what the system must do*. When the two disagree, the discovery documents win until a product decision says otherwise — that's how a hypothesis stays a hypothesis instead of quietly becoming a spec.
+The product-discovery set (`../01-product-discovery`) defines *why* we're building this and *what we believe is true*. These requirements documents define *what the system must do*. When the two disagree, the discovery documents win until a product decision says otherwise — that's how a hypothesis stays a hypothesis instead of quietly becoming a spec.
 
 Decisions already made are dated in the relevant document. Everything still marked `TBD` is a real open question, not a placeholder for an answer we already know.
 

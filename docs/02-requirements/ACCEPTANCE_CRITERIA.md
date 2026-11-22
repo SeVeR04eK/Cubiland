@@ -6,9 +6,9 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft |
-| Version | 0.1 |
-| Last Updated | 2026-11-11 |
+| Status | Updated Draft |
+| Version | 0.2 |
+| Last Updated | 2026-11-22 |
 | Author | Andrii Severyn |
 
 ## 2. Purpose
@@ -148,6 +148,8 @@ Timer precision, penalty, DNF, and scramble-specific criteria are TBD.
 
 ## 8. Stars, Achievements, and Currency
 
+**Decision confirmed 2026-11-22:** Stars, achievements, progression levels, and in-game currency are explicitly excluded from the MVP. The criteria in this section are retained for future phase planning.
+
 ### AC-GAM-01 — Separate balances
 - **Given** a user has stars and in-game currency,
 - **When** the user views progression or economy information,
@@ -182,6 +184,8 @@ Exact reward amounts and triggers are TBD.
 
 ## 9. Cosmetic Shop
 
+**Decision confirmed 2026-11-22:** The cosmetic shop is explicitly excluded from the MVP. The criteria in this section are retained for future phase planning.
+
 ### AC-SHP-01 — Sufficient balance purchase
 - **Given** an item is available and the user has sufficient currency,
 - **When** the purchase succeeds,
@@ -208,6 +212,8 @@ Exact reward amounts and triggers are TBD.
 - **Then** it changes only its approved cosmetic presentation and does not alter gameplay outcomes.
 
 ## 10. Premium Entitlements
+
+**Decision confirmed 2026-11-22:** Premium subscriptions and payment integration are explicitly excluded from the MVP. The criteria in this section are retained for future phase planning. The provisional preferred payment solution for a future monetization phase is Stripe with Stripe Billing.
 
 ### AC-PRE-01 — Active Premium access
 - **Given** a user has a valid active Premium entitlement,
@@ -253,13 +259,13 @@ Exact reward amounts and triggers are TBD.
 
 The following cannot be finalised until business rules are approved:
 - Exact course completion and prerequisite conditions.
-- CFOP and Full CFOP scope.
+- **Decision confirmed 2026-11-22:** CFOP and Full CFOP are excluded from MVP.
 - Algorithm exercise scoring and mastery.
 - Timer precision, penalties, DNF, and scramble behaviour.
 - Exact statistics formulas and record inclusion.
-- Star thresholds, levels, achievement catalogue, and reward amounts.
-- Currency earning limits and shop catalogue/prices.
-- Free/Premium feature matrix and subscription lifecycle.
+- **Decision confirmed 2026-11-22:** Star thresholds, levels, achievement catalogue, and reward amounts are excluded from MVP.
+- **Decision confirmed 2026-11-22:** Currency earning limits and shop catalogue/prices are excluded from MVP.
+- **Decision confirmed 2026-11-22:** Free/Premium feature matrix and subscription lifecycle are excluded from MVP.
 - Challenge and competition scoring, eligibility, and anti-cheat rules.
 - Community moderation and reporting outcomes.
 - Notification and reminder behaviour.

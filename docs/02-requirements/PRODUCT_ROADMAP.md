@@ -6,9 +6,9 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft |
-| Version | 0.1 |
-| Last Updated | 2026-11-11 |
+| Status | Updated Draft |
+| Version | 0.2 |
+| Last Updated | 2026-11-22 |
 | Author | Andrii Severyn |
 
 ## 2. Purpose
@@ -53,7 +53,7 @@ Candidate scope:
 
 **Objective:** deliver the primary learning-to-practice experience for the 3×3×3 cube.
 
-Candidate scope:
+**Confirmed MVP scope (decisions confirmed 2026-11-22):**
 - Registration, sign-in, and user profile.
 - Beginner 3×3×3 course.
 - Course and lesson progress.
@@ -61,6 +61,15 @@ Candidate scope:
 - Solve recording and history.
 - Basic statistics and performance analysis.
 - Essential settings required by the MVP.
+
+**Explicitly excluded from MVP:**
+- 3×3×3 CFOP and Full CFOP courses.
+- In-game currency and cosmetic shop.
+- Stars, achievements, and progression levels.
+- Leaderboards.
+- Practice challenges and challenge-based training modes.
+- Premium subscriptions and Premium features.
+- Payment integration.
 
 **Exit conditions:**
 - A user can create an account and access the beginner course.
@@ -100,7 +109,7 @@ Candidate scope:
 **Objective:** expand educational content and introduce the approved commercial model.
 
 Candidate scope:
-- Expanded method/course catalogue, including confirmed CFOP scope.
+- Expanded method/course catalogue, including CFOP content.
 - Algorithm reference and practice tools.
 - Video lessons.
 - Premium lessons and approved Premium features.
@@ -112,7 +121,7 @@ Candidate scope:
 - Confirmed CFOP and Full CFOP definitions.
 - Approved content production plan.
 - Approved Premium feature matrix and pricing.
-- Selected billing provider and legal review.
+- Selected billing provider (provisional choice: Stripe with Stripe Billing) and legal review.
 
 **Exit conditions:**
 - Entitlements are enforced consistently.
@@ -155,31 +164,31 @@ Release order and scope depend on user demand, validation, and product capacity.
 
 | Capability | Proposed phase | Status |
 |---|---|---|
-| Authentication and profile | A–B | MVP candidate |
-| Beginner 3×3×3 course | B | MVP candidate |
-| Timer | B | MVP candidate |
-| Solve history | B | MVP candidate |
-| Basic statistics | B | MVP candidate |
-| Settings | B or later | Exact MVP scope TBD |
-| Stars | C | Rules TBD |
-| Achievements | C | Catalogue and rules TBD |
-| Levels | C | Progression model TBD |
-| In-game currency | C | Economy rules TBD |
-| Cosmetic shop | C | Catalogue and pricing TBD |
-| Tasks and challenges | C or E | Scope TBD |
-| CFOP course | D | Scope and release TBD |
-| Full CFOP | D or later | Definition TBD |
-| Algorithm practice | D | Scope TBD |
-| Video lessons | D | Content and access TBD |
-| Premium lessons | D | Entitlement rules TBD |
-| Premium subscription | D | Commercial model TBD |
-| Community chat | E | Moderation scope TBD |
-| Competitions | E | Format and rules TBD |
-| Leaderboards | C or E | Depends on ranking rules |
-| Scramble of the Day | F | Priority TBD |
-| Languages | F | Initial languages TBD |
-| Speedcubing news | F | Source and editorial model TBD |
-| Other puzzles | F | Product scope TBD |
+| Authentication and profile | A–B | MVP confirmed |
+| Beginner 3×3×3 course | B | MVP confirmed |
+| Timer | B | MVP confirmed |
+| Solve history | B | MVP confirmed |
+| Basic statistics | B | MVP confirmed |
+| Settings | B | Partial MVP (essential only) |
+| Stars | C | Post-MVP; rules TBD |
+| Achievements | C | Post-MVP; catalogue and rules TBD |
+| Levels | C | Post-MVP; progression model TBD |
+| In-game currency | C | Post-MVP; economy rules TBD |
+| Cosmetic shop | C | Post-MVP; catalogue and pricing TBD |
+| Tasks and challenges | C or E | Post-MVP; scope TBD |
+| CFOP course | D | Post-MVP; scope TBD |
+| Full CFOP | D or later | Post-MVP; definition TBD |
+| Algorithm practice | D | Post-MVP; scope TBD |
+| Video lessons | D | Post-MVP; content and access TBD |
+| Premium lessons | D | Post-MVP; entitlement rules TBD |
+| Premium subscription | D | Post-MVP; Stripe provisional choice |
+| Community chat | E | Post-MVP; moderation scope TBD |
+| Competitions | E | Post-MVP; format and rules TBD |
+| Leaderboards | C or E | Post-MVP; depends on ranking rules |
+| Scramble of the Day | F | Post-MVP; priority TBD |
+| Languages | F | Post-MVP; initial languages TBD |
+| Speedcubing news | F | Post-MVP; source and editorial model TBD |
+| Other puzzles | F | Post-MVP; product scope TBD |
 | Lesson Reminders | TBD | Schedule, cadence, and notification channels require clarification |
 
 ## 6. Dependencies

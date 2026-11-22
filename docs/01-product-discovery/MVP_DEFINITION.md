@@ -1,8 +1,8 @@
 # MVP Definition
 
-**Document status:** Proposed MVP scope  
-**Version:** 1.0  
-**Last updated:** 2026-11-11  
+**Document status:** Confirmed MVP scope  
+**Version:** 1.1  
+**Last updated:** 2026-11-22  
 **Author:** Andrii Severyn
 
 ## 1. MVP Purpose
@@ -55,16 +55,16 @@ The sub-1-minute target is an illustrative learning goal, not a guaranteed resul
 |---|---|
 | Description | Learning content for the CFOP advanced solving method |
 | User value | Learn an advanced method and improve solving performance |
-| MVP | Marked `Yes / Inc.` in the initial prioritization |
-| Premium | Not planned as Premium-only content |
+| MVP | **Excluded** — CFOP is not part of the MVP |
+| Premium | TBD for future release |
 
-**Open scope decision:** The exact meaning of `Inc.` and the amount of CFOP content included in the MVP must be defined. The current plan retains CFOP in the MVP scope pending that definition.
+**Decision confirmed 2026-11-22:** CFOP is explicitly excluded from the MVP. The beginner course is the only solving-method content included in the initial release. CFOP will be considered for a later phase.
 
 ### 4.3 Full CFOP
 
-Full CFOP is listed separately in the feature plan and marked Must-have. The initial notes also associate it with an approximate sub-20 goal.
+Full CFOP is explicitly excluded from the MVP. It is a future enhancement that may be delivered after the beginner course and core platform are established.
 
-Its relationship to the general 3×3×3 CFOP course must be defined during requirements work. The separate entry is preserved until the course structure is specified.
+**Decision confirmed 2026-11-22:** Full CFOP is not part of the MVP and will be considered for a later release phase.
 
 ### 4.4 Other Courses
 
@@ -80,11 +80,10 @@ The current MVP plan includes the following capabilities:
 |---|---|---|
 | User profile and authentication | Included | Create an account and preserve user progress |
 | 3×3×3 Beginner Course | Included | Provide the initial learning path |
-| 3×3×3 CFOP | Included in principle; exact content scope to be defined | Support progression beyond beginner solving |
+| 3×3×3 CFOP | **Excluded** | Not part of MVP; planned for future phase |
 | Timer | Included | Measure solving times during practice |
 | Statistics and analysis | Included | Review solving performance and progress |
-| In-game currency | Marked for MVP | Support the planned reward system; detailed rules to be specified |
-| Settings | MVP notation is `50/50` | Core settings and initial release scope to be specified |
+| Settings | Partially included | Only essential settings for the first release |
 
 Training plans and practice sessions are part of the core product concept. Their detailed MVP behavior will be defined in Requirements Engineering.
 
@@ -123,6 +122,8 @@ The exact star-awarding rules and leaderboard behavior will be defined separatel
 - Users can spend currency in the in-platform shop.
 - Currency is intended for cosmetic items and personalization rather than gameplay advantages.
 
+**Decision confirmed 2026-11-22:** In-game currency is explicitly excluded from the MVP. It will be considered for a later phase when the progression and reward system is implemented.
+
 ### 7.3 Achievements
 
 - Achievements recognize notable user milestones and accomplishments.
@@ -137,6 +138,13 @@ Levels are part of the intended progression experience. Their relationship to co
 
 The following features remain part of the broader product plan and are currently outside the initial MVP scope or have a later release target:
 
+- 3×3×3 CFOP and Full CFOP courses.
+- In-game currency and cosmetic shop.
+- Stars, achievements, and progression levels.
+- Leaderboards.
+- Practice challenges and challenge-based training modes.
+- Premium subscriptions and Premium features.
+- Payment integration.
 - Additional courses and puzzle types.
 - Community chat and rooms.
 - Tasks and challenges.
@@ -180,12 +188,12 @@ The following items will be resolved during Requirements Engineering. Items alre
 
 | # | Decision | Status | Note |
 |---|---|---|---|
-| 1 | Exact MVP content and structure of the CFOP course | Open | |
-| 2 | Relationship between the CFOP course and the separate Full CFOP feature | Open | Two entries partially overlap; course structure must be specified first. |
-| 3 | Meaning of the original `Inc.` notation | Open | Original notation retained to preserve provenance. |
-| 4 | Basic and advanced scope of statistics | Open | |
-| 5 | MVP behavior of training plans and practice sessions | Open | |
-| 6 | Initial behavior of stars, achievements, currency, and levels | Open | |
-| 7 | MVP scope of Settings | Open | Original notation `50/50` retained. |
-| 9 | Free/Premium boundaries and subscription benefits | Open | |
+| 1 | Exact MVP content and structure of the CFOP course | **Decided 2026-11-22** | CFOP is excluded from MVP. |
+| 2 | Relationship between the CFOP course and the separate Full CFOP feature | **Decided 2026-11-22** | Both are excluded from MVP and planned for future phases. |
+| 3 | Meaning of the original `Inc.` notation | **Decided 2026-11-22** | Resolved by explicit MVP exclusions. |
+| 4 | Basic and advanced scope of statistics | Open | MVP includes basic statistics; advanced scope TBD for future. |
+| 5 | MVP behavior of training plans and practice sessions | Open | Challenge-based practice is excluded from MVP. |
+| 6 | Initial behavior of stars, achievements, currency, and levels | **Decided 2026-11-22** | All excluded from MVP; planned for future phase. |
+| 7 | MVP scope of Settings | Open | Only essential settings included in MVP. |
+| 9 | Free/Premium boundaries and subscription benefits | Open | Premium and payment integration excluded from MVP. |
 | 10 | Numerical MVP success targets | Open | Target values and measurement windows to be set before the MVP validation period. |

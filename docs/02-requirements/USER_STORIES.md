@@ -6,9 +6,9 @@
 |---|---|
 | Product | Cubiland |
 | Phase | Requirements Engineering |
-| Status | Initial Draft |
-| Version | 0.1 |
-| Last Updated | 2026-11-11 |
+| Status | Updated Draft |
+| Version | 0.2 |
+| Last Updated | 2026-11-22 |
 | Author | Andrii Severyn |
 
 ## 2. Purpose and Format
@@ -46,7 +46,7 @@ Priorities below are provisional and must be reconciled with the approved Phase 
 | US-LRN-02 | As a learner, I want to see course structure and my progress so that I know what I have completed and what comes next. | Must |
 | US-LRN-03 | As a learner, I want to open individual lessons so that I can study one topic at a time. | Must |
 | US-LRN-04 | As a learner, I want to resume a course so that I can continue from my previous progress. | Should |
-| US-LRN-05 | As a developing speedcuber, I want to access more advanced methods such as CFOP so that I can progress beyond beginner solving. | TBD |
+| US-LRN-05 | As a developing speedcuber, I want to access more advanced methods such as CFOP so that I can progress beyond beginner solving. | Post-MVP | **Decision 2026-11-22:** CFOP is excluded from MVP. |
 | US-LRN-06 | As a learner, I want to access video lessons where available so that I can learn through demonstrations. | Should |
 | US-LRN-07 | As a learner, I want to know whether content is included in my plan so that I understand access requirements before opening it. | Must |
 
@@ -80,23 +80,27 @@ Priorities below are provisional and must be reconciled with the approved Phase 
 
 ## 8. Progression and Gamification
 
+**Decision confirmed 2026-11-22:** Stars, achievements, progression levels, and leaderboards are explicitly excluded from the MVP. The stories in this section are retained for future phase planning.
+
 | ID | User story | Priority |
 |---|---|---|
-| US-GAM-01 | As a user, I want to earn stars for eligible accomplishments so that my achievements and progress are recognised. | TBD |
-| US-GAM-02 | As a user, I want to view my achievements so that I can understand which milestones I have reached. | TBD |
-| US-GAM-03 | As a user, I want to receive in-game currency for selected milestones so that I can obtain cosmetic items. | TBD |
-| US-GAM-04 | As a user, I want to see my level and progression so that I understand my development in Cubiland. | TBD |
-| US-GAM-05 | As a competitive user, I want stars to contribute to leaderboards according to published rules so that rankings are understandable. | TBD |
-| US-GAM-06 | As a user, I want rewards to be granted only once for the same eligible event so that reward balances remain fair and accurate. | Must |
+| US-GAM-01 | As a user, I want to earn stars for eligible accomplishments so that my achievements and progress are recognised. | Post-MVP |
+| US-GAM-02 | As a user, I want to view my achievements so that I can understand which milestones I have reached. | Post-MVP |
+| US-GAM-03 | As a user, I want to receive in-game currency for selected milestones so that I can obtain cosmetic items. | Post-MVP |
+| US-GAM-04 | As a user, I want to see my level and progression so that I understand my development in Cubiland. | Post-MVP |
+| US-GAM-05 | As a competitive user, I want stars to contribute to leaderboards according to published rules so that rankings are understandable. | Post-MVP |
+| US-GAM-06 | As a user, I want rewards to be granted only once for the same eligible event so that reward balances remain fair and accurate. | Post-MVP |
 
 ## 9. Cosmetic Shop
 
+**Decision confirmed 2026-11-22:** The cosmetic shop is explicitly excluded from the MVP. The stories in this section are retained for future phase planning.
+
 | ID | User story | Priority |
 |---|---|---|
-| US-SHP-01 | As a user, I want to browse cosmetic items so that I can personalise my Cubiland experience. | Could |
-| US-SHP-02 | As a user, I want to purchase an available cosmetic item with in-game currency so that I can use my earned rewards. | Could |
-| US-SHP-03 | As a user, I want to see my currency balance and item ownership so that I can make informed purchases. | Could |
-| US-SHP-04 | As a user, I want cosmetic purchases not to affect gameplay advantages so that progression remains fair. | Must |
+| US-SHP-01 | As a user, I want to browse cosmetic items so that I can personalise my Cubiland experience. | Post-MVP |
+| US-SHP-02 | As a user, I want to purchase an available cosmetic item with in-game currency so that I can use my earned rewards. | Post-MVP |
+| US-SHP-03 | As a user, I want to see my currency balance and item ownership so that I can make informed purchases. | Post-MVP |
+| US-SHP-04 | As a user, I want cosmetic purchases not to affect gameplay advantages so that progression remains fair. | Post-MVP |
 
 ## 10. Challenges, Competitions, and Community
 
@@ -119,12 +123,14 @@ Priorities below are provisional and must be reconciled with the approved Phase 
 
 ## 12. Premium and Subscription
 
+**Decision confirmed 2026-11-22:** Premium subscriptions and payment integration are explicitly excluded from the MVP. The stories in this section are retained for future phase planning. The provisional preferred payment solution for a future monetization phase is Stripe with Stripe Billing.
+
 | ID | User story | Priority |
 |---|---|---|
-| US-PRE-01 | As a user, I want to understand the differences between Free and Premium so that I can decide whether Premium is useful to me. | Must |
-| US-PRE-02 | As a Premium user, I want access to the content and features included in my active entitlement so that I receive the benefits of my subscription. | Must |
-| US-PRE-03 | As a subscriber, I want my access status to reflect subscription changes so that entitlements remain accurate. | Must |
-| US-PRE-04 | As a user, I want to manage or cancel my subscription through the supported billing process so that I remain in control of recurring payments. | TBD |
+| US-PRE-01 | As a user, I want to understand the differences between Free and Premium so that I can decide whether Premium is useful to me. | Post-MVP |
+| US-PRE-02 | As a Premium user, I want access to the content and features included in my active entitlement so that I receive the benefits of my subscription. | Post-MVP |
+| US-PRE-03 | As a subscriber, I want my access status to reflect subscription changes so that entitlements remain accurate. | Post-MVP |
+| US-PRE-04 | As a user, I want to manage or cancel my subscription through the supported billing process so that I remain in control of recurring payments. | Post-MVP |
 
 ## 13. Administration
 
