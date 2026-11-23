@@ -19,6 +19,8 @@ This directory records the main architectural decisions made for Cubiland. Each 
 | [ADR-0008](ADR-0008-single-vps-docker-compose.md) | Single VPS with Ubuntu and Docker Compose | Accepted |
 | [ADR-0009](ADR-0009-github-actions-ci-and-deferred-cd.md) | GitHub Actions CI; defer automatic production CD | Accepted |
 | [ADR-0010](ADR-0010-s3-compatible-media-storage.md) | S3-compatible Object Storage for media | Accepted |
+| [ADR-0011](ADR-0011-celery-background-task-processing.md) | Celery for background task processing | Accepted |
+| [ADR-0012](ADR-0012-rabbitmq-message-broker.md) | RabbitMQ as message broker | Accepted |
 
 ## Statuses
 

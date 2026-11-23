@@ -23,6 +23,11 @@ The MVP uses a single VPS and Docker Compose. The infrastructure is intentionall
 | Backend runtime | FastAPI + Uvicorn |
 | Database | PostgreSQL |
 | Cache and rate-limit storage | Redis |
+| Message broker | RabbitMQ |
+| Background task processor | Celery |
+| Celery workers | Celery workers for task execution |
+| Celery Beat | Celery Beat for scheduled tasks |
+| Email provider | Resend |
 | Media storage | S3-compatible Object Storage |
 | CI | GitHub Actions |
 | Production CD | Deferred until after initial release |
@@ -60,7 +65,7 @@ A separate staging environment is not required for the MVP. It may be introduced
 
 ## 4. Production Architecture
 
-The MVP production deployment contains four primary containers:
+The MVP production deployment contains the following containers:
 
 | Container | Responsibility |
 |---|---|
@@ -68,6 +73,9 @@ The MVP production deployment contains four primary containers:
 | `api` | Runs the FastAPI application using Uvicorn |
 | `db` | Runs PostgreSQL and stores persistent application data |
 | `redis` | Provides caching and transient rate-limit state |
+| `rabbitmq` | Message broker for Celery background tasks |
+| `celery_worker` | Executes queued background tasks |
+| `celery_beat` | Schedules periodic tasks when required |
 
 Media files are stored in an external S3-compatible Object Storage service and are not stored in the PostgreSQL container or the application container filesystem.
 
@@ -76,8 +84,9 @@ Media files are stored in an external S3-compatible Object Storage service and a
 - Nginx is the only application container exposed to the public network.
 - Expose ports `80` and `443` as required for HTTP redirection and HTTPS.
 - FastAPI is reachable by Nginx through an internal Docker network.
-- PostgreSQL and Redis are reachable only by services on the appropriate internal Docker network.
-- Do not publish PostgreSQL or Redis ports publicly.
+- PostgreSQL, Redis, and RabbitMQ are reachable only by services on the appropriate internal Docker network.
+- Do not publish PostgreSQL, Redis, or RabbitMQ ports publicly.
+- RabbitMQ management interface port (15672) is exposed only in development, not in production.
 - Use separate internal networks where useful to limit unnecessary service-to-service access.
 
 ### 4.2 Backend Instances
@@ -105,7 +114,7 @@ Requirements:
 
 Redis data is transient for the MVP. Redis is not the source of truth for user sessions, refresh-token records or application data.
 
-Celery and RabbitMQ are not part of the MVP production stack. They may be introduced later if asynchronous/background workloads require them.
+RabbitMQ data is persisted using Docker volumes to survive container restarts. Celery Beat scheduler state is also persisted.
 
 ## 6. Nginx and HTTPS
 
@@ -142,6 +151,7 @@ Secrets include, at minimum:
 
 - PostgreSQL credentials.
 - Redis credentials if enabled.
+- RabbitMQ credentials.
 - JWT signing secret.
 - Resend API key.
 - Object Storage credentials.
@@ -272,6 +282,8 @@ MVP monitoring uses built-in service health checks and logs rather than a dedica
 - Check application readiness through a backend health endpoint.
 - Ensure PostgreSQL health checks verify database readiness.
 - Ensure Redis health checks verify that Redis responds.
+- Ensure RabbitMQ health checks verify that the broker is accepting connections.
+- Ensure Celery workers are running and able to process tasks.
 - Use health status during manual deployment verification.
 
 ### 12.2 Logging
@@ -339,7 +351,7 @@ If traffic or availability requirements increase, consider multiple API instance
 | Database migrations | Alembic, explicit deployment step | Automated controlled migration stage |
 | Backups | Daily + weekly retention, off-VPS | Reassess RPO/RTO and backup strategy |
 | Monitoring | Health checks and logs | Add Sentry/metrics/alerting if justified |
-| Background jobs | Not in MVP | Celery + RabbitMQ if required |
+| Background jobs | Celery + RabbitMQ for email tasks | Additional task types if required |
 
 ## 16. Remaining Deployment Decisions
 

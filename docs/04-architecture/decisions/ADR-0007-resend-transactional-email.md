@@ -10,7 +10,7 @@ Cubiland requires transactional email for account verification and password reco
 
 ## Decision
 
-Use **Resend** as the transactional email provider for the MVP. FastAPI sends messages through the Resend API.
+Use **Resend** as the transactional email provider for the MVP. Email delivery is performed asynchronously through Celery to avoid blocking HTTP requests. The backend uses an EmailService abstraction to decouple business logic from the Resend provider.
 
 ## Alternatives Considered
 
@@ -20,7 +20,9 @@ Use **Resend** as the transactional email provider for the MVP. FastAPI sends me
 ## Consequences
 
 **Benefits**
-- Simple API integration from FastAPI.
+- Simple API integration through Celery background tasks.
+- Asynchronous email delivery avoids blocking HTTP requests.
+- EmailService abstraction allows provider replacement.
 - One provider can handle verification and password-reset messages.
 
 **Trade-offs**

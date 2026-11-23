@@ -25,7 +25,12 @@ The system consists of the following components:
 | Database | PostgreSQL | Persistent application data |
 | ORM | SQLAlchemy 2.0 AsyncIO | Database access |
 | Migrations | Alembic | Database schema migrations |
-| Cache | Redis | Temporary cached data |
+| Cache | Redis | Temporary cached data and rate limiting |
+| Message Broker | RabbitMQ | Task queue and message routing for background jobs |
+| Background Task Processor | Celery | Asynchronous task execution |
+| Celery Workers | Celery | Execute queued background tasks |
+| Celery Beat | Celery Beat | Scheduled periodic tasks |
+| Email Provider | Resend | Transactional email delivery |
 | Object Storage | S3-compatible storage | Images and learning materials |
 | Web Server / Reverse Proxy | Nginx | Static file serving, HTTPS and API routing |
 | Containerization | Docker | Application containerization |
@@ -111,11 +116,42 @@ SQLAlchemy 2.0 with AsyncIO is used for database access. Alembic manages schema 
 
 ### 6.2 Redis
 
-Redis is included in the MVP for caching.
+Redis is included in the MVP for caching and rate limiting.
 
 It is not the authoritative storage for user accounts, course content or solve records. Persistent application data remains in PostgreSQL.
 
-### 6.3 Object Storage
+### 6.3 RabbitMQ
+
+RabbitMQ is the message broker for Celery background tasks.
+
+It queues and routes task messages between the FastAPI application and Celery workers. RabbitMQ ensures reliable task delivery and supports retry behavior for failed tasks.
+
+RabbitMQ is not used as a cache or for persistent application data.
+
+### 6.4 Celery Background Tasks
+
+Celery executes asynchronous background tasks for operations that should not block HTTP requests.
+
+Primary use cases:
+- Email delivery (verification, password reset, security notifications)
+- Future scheduled maintenance tasks
+- Future expensive background calculations
+
+Celery workers run independently of the FastAPI HTTP server. Tasks are queued through RabbitMQ and executed by workers. Celery Beat handles scheduled periodic tasks when required.
+
+### 6.5 Resend Email
+
+Resend is the transactional email provider for the MVP.
+
+It delivers:
+- Email verification messages
+- Password reset emails
+- Security-related notifications
+- Other transactional emails when needed
+
+Email delivery is performed asynchronously through Celery tasks to avoid blocking HTTP requests.
+
+### 6.6 Object Storage
 
 An S3-compatible Object Storage service is used for images and learning materials.
 
@@ -198,19 +234,11 @@ The deployment consists of:
 - FastAPI backend
 - PostgreSQL
 - Redis
+- RabbitMQ
+- Celery workers
+- Celery Beat (if periodic tasks are required)
 
 Object Storage is accessed as an external service.
-
-## 11. Background Processing — Future Extension
-
-Background task processing is not part of the initial MVP infrastructure.
-
-The architecture should remain extensible for future integration of:
-
-- **Celery** — background task processing.
-- **RabbitMQ** — message broker for Celery.
-
-These components may be introduced when background processing requirements justify their operational complexity.
 
 ## 12. High-Level Request Flow
 
@@ -240,6 +268,17 @@ These components may be introduced when background processing requirements justi
 5. Uploaded media files are stored in Object Storage.
 6. Published content becomes available to users through the learning interface.
 
+### 12.4 Email Delivery (Background Task)
+
+1. The user performs an action requiring email (registration, password reset).
+2. FastAPI processes the request and generates the necessary token.
+3. The application queues a Celery task with the email payload.
+4. RabbitMQ receives and stores the task message.
+5. A Celery worker picks up the task.
+6. The worker calls the EmailService abstraction.
+7. The EmailService uses the Resend provider to send the email.
+8. The task completes with success or is retried on transient failures.
+
 ## 13. Architectural Principles
 
 The system follows these principles:
@@ -255,7 +294,6 @@ The system follows these principles:
 
 The architecture allows future evolution, including:
 
-- Background task processing with Celery and RabbitMQ.
 - Additional learning methods and course types.
 - More advanced statistics and performance analysis.
 - Expanded administrative capabilities.

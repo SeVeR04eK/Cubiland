@@ -206,7 +206,9 @@ If the frontend and API use separate origins, the deployment must explicitly con
 
 **Resend** is the selected transactional email provider for the MVP.
 
-FastAPI sends transactional email through the Resend API. The Resend API key is stored in environment configuration and must never be committed to source control or exposed to the frontend.
+Email delivery is performed asynchronously through Celery to avoid blocking HTTP requests. The backend uses an EmailService abstraction to decouple business logic from the Resend provider.
+
+The Resend API key is stored in environment configuration and must never be committed to source control or exposed to the frontend.
 
 The free plan may be used during MVP development within the provider's current limits. Domain verification and DNS configuration, including SPF and DKIM, are deployment tasks.
 
@@ -215,10 +217,13 @@ The free plan may be used during MVP development within the provider's current l
 1. The user registers with an email address and password.
 2. The backend creates the account in an unverified state.
 3. The backend generates a cryptographically random, single-use verification token.
-4. The backend stores only the token hash and its expiration.
-5. Resend delivers a verification link.
-6. The user opens the link.
-7. The backend validates the token, marks the email as verified and invalidates the token.
+4. The backend stores only the token hash and its expiration in PostgreSQL.
+5. The application queues an email delivery task through Celery.
+6. RabbitMQ receives the task message.
+7. A Celery worker picks up the task and calls the EmailService.
+8. The EmailService uses the Resend provider to deliver the verification link.
+9. The user opens the link.
+10. The backend validates the token, marks the email as verified and invalidates the token.
 
 Verification token lifetime: **15 minutes**.
 
@@ -253,12 +258,15 @@ The verification link is handled by a frontend route that submits the token to t
 2. The backend returns a generic response regardless of whether the account exists.
 3. If an eligible account exists, the backend generates a cryptographically random, single-use reset token.
 4. Only the token hash is stored in PostgreSQL.
-5. Resend delivers a reset link.
-6. The user submits the token and new password.
-7. The backend validates the token and password policy.
-8. The password is hashed using Argon2id and updated.
-9. The reset token is invalidated.
-10. All active Refresh Sessions for that user are revoked.
+5. The application queues an email delivery task through Celery.
+6. RabbitMQ receives the task message.
+7. A Celery worker picks up the task and calls the EmailService.
+8. The EmailService uses the Resend provider to deliver the reset link.
+9. The user submits the token and new password.
+10. The backend validates the token and password policy.
+11. The password is hashed using Argon2id and updated.
+12. The reset token is invalidated.
+13. All active Refresh Sessions for that user are revoked.
 
 Reset token lifetime: **15 minutes**.
 

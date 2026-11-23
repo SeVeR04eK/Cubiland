@@ -31,13 +31,15 @@ The backend is responsible for business logic, authentication, authorization, da
 | SQLAlchemy 2.0 AsyncIO | Asynchronous database access |
 | PostgreSQL | Primary relational database |
 | Alembic | Database migrations |
-| Redis | Caching |
+| Redis | Caching and rate limiting |
+| RabbitMQ | Message broker for background tasks |
+| Celery | Background task processing |
+| Celery Beat | Scheduled periodic tasks |
+| Resend | Transactional email delivery |
 | Pydantic | Data validation and serialization |
 | JWT | Authentication |
 | Docker | Containerization |
 | Docker Compose | Local and production service orchestration |
-
-Celery and RabbitMQ are planned as future infrastructure components and are not required for the initial MVP.
 
 ## 3. Architectural Style
 
@@ -145,11 +147,21 @@ Contains:
 - Database configuration.
 - Database session management.
 - Redis integration.
+- RabbitMQ integration.
+- Celery application initialization and configuration.
+- Celery task definitions.
+- Email service implementation (Resend provider).
+- Email templates.
 - Object Storage integration.
 - External service integrations.
 - Security-related infrastructure implementations.
 
 Infrastructure implementations satisfy interfaces defined by the inner application layers.
+
+Background task infrastructure is organized separately to maintain clean boundaries:
+- Celery application setup belongs in the infrastructure layer.
+- Task definitions are organized by domain module.
+- Email service abstraction allows provider replacement.
 
 ## 5. Backend Business Modules
 
@@ -168,6 +180,9 @@ Main responsibilities:
 - Password management.
 - Role-based authorization.
 - Account-related operations.
+- Email verification token generation and validation.
+- Password reset token generation and validation.
+- Scheduling email delivery tasks through Celery.
 
 ### 5.2 User Profiles
 
@@ -334,7 +349,7 @@ Detailed token lifecycle, refresh handling, password security and authorization 
 
 ## 11. Caching
 
-Redis is included in the MVP for caching.
+Redis is included in the MVP for caching and rate limiting.
 
 The backend may use caching for frequently accessed data when appropriate.
 
@@ -350,7 +365,70 @@ Redis must not replace PostgreSQL as the source of truth for persistent applicat
 
 Caching should be introduced selectively rather than applied to every database operation.
 
-## 12. Error Handling and Logging
+## 12. Background Task Processing
+
+### 12.1 Celery and RabbitMQ
+
+Celery and RabbitMQ are part of the MVP infrastructure for asynchronous task execution.
+
+**Responsibilities:**
+
+- Celery executes background tasks independently of HTTP request processing.
+- RabbitMQ acts as the message broker, queuing and routing task messages.
+- Celery Workers pick up and execute queued tasks.
+- Celery Beat schedules periodic tasks when required.
+
+**Configuration:**
+
+- Broker: RabbitMQ (not Redis).
+- Serialization: JSON (not pickle).
+- Task acknowledgement: Enabled.
+- Retry policy: Bounded retries with exponential backoff for transient failures.
+- Worker concurrency: Configurable based on available resources.
+- Result backend: Not required for email tasks; results are ignored where not needed.
+
+### 12.2 Email Service Architecture
+
+The backend uses an EmailService abstraction to decouple business logic from the email provider.
+
+**Architecture:**
+
+- Application layer queues email tasks through Celery.
+- Celery workers execute email tasks.
+- Workers call the EmailService abstraction.
+- EmailService implementation uses the Resend provider.
+- Email templates are separated from business logic.
+
+**Requirements:**
+
+- Support HTML and plain-text email content.
+- Handle provider errors and temporary delivery failures.
+- Implement retry behavior through Celery.
+- Never log passwords, reset tokens, verification tokens, or API keys.
+- The backend must not depend directly on Resend throughout the application.
+
+### 12.3 Task Reliability
+
+**Error Handling:**
+
+- Temporary Resend API failures: Retry with exponential backoff.
+- Network timeouts: Retry with bounded attempts.
+- RabbitMQ connection failures: Workers reconnect automatically.
+- Worker restarts: Tasks are re-queued from RabbitMQ.
+- Retry exhaustion: Failed tasks are logged for investigation.
+
+**Idempotency:**
+
+- Email tasks should be idempotent where practical.
+- Duplicate task execution is possible (at-least-once delivery).
+- Token validation and consumption happen in the backend to prevent misuse.
+
+**Dead Letter Queue:**
+
+- A Dead Letter Queue is not required for the MVP.
+- Failed tasks are logged and monitored through Celery/worker logs.
+
+## 13. Error Handling and Logging
 
 The backend should implement consistent error handling.
 
@@ -363,24 +441,6 @@ Requirements:
 - No exposure of sensitive information in error responses or logs.
 
 Business exceptions should be distinguishable from infrastructure and unexpected application errors.
-
-## 13. Background Processing — Future
-
-Background task processing is not required for the initial MVP.
-
-The architecture should allow future integration of:
-
-- Celery for background task execution.
-- RabbitMQ as a message broker.
-
-Potential future use cases include:
-
-- Email delivery.
-- Scheduled maintenance tasks.
-- Expired token cleanup.
-- More expensive background calculations.
-
-These capabilities should be introduced when actual requirements justify them.
 
 ## 14. Testing Strategy
 
@@ -399,6 +459,8 @@ Test interactions with:
 - PostgreSQL.
 - Repository implementations.
 - Redis where applicable.
+- RabbitMQ and Celery task execution.
+- Email service integration.
 - Application module integrations.
 
 ### 14.3 API Tests
