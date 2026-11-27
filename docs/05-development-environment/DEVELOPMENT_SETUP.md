@@ -145,6 +145,25 @@ poetry install --no-root
 poetry run uvicorn src.main:app --reload --port 8000
 ```
 
+### Backend Tests
+
+Run the complete backend test suite from the `backend` directory:
+
+``` bash
+poetry run pytest
+```
+
+Use verbose output or run an individual test file:
+
+``` bash
+poetry run pytest -v
+poetry run pytest tests/test_config.py
+```
+
+Application logs use readable console output in development and structured
+JSON output in production. Both structlog and standard-library log records
+use the centralized logging configuration.
+
 ### Frontend
 
 Frontend development is not yet configured. The package.json has
