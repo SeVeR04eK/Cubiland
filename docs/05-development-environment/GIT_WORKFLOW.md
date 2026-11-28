@@ -90,7 +90,9 @@ If no release branch is needed:
 2. Merge it after the required CI checks pass.
 3. Tag the release:
    ```bash
-   git tag -a v1.0.0 -m "Release version 1.0.0"
+   git fetch origin main
+   RELEASE_COMMIT=$(git rev-parse origin/main)
+   git tag -a v1.0.0 "$RELEASE_COMMIT" -m "Release version 1.0.0"
    git push origin v1.0.0
    ```
 
@@ -109,7 +111,9 @@ If no release branch is needed:
 
 4. Tag the release:
    ```bash
-   git tag -a v1.0.0 -m "Release version 1.0.0"
+   git fetch origin main
+   RELEASE_COMMIT=$(git rev-parse origin/main)
+   git tag -a v1.0.0 "$RELEASE_COMMIT" -m "Release version 1.0.0"
    git push origin v1.0.0
    ```
 
@@ -117,6 +121,8 @@ If no release branch is needed:
 
 6. Delete the release branch:
    ```bash
+   git checkout develop
+   git pull origin develop
    git branch -d release/v1.0.0
    git push origin --delete release/v1.0.0
    ```

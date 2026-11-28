@@ -50,11 +50,16 @@ async def request_validation_exception_handler(
         )
     details: list[dict[str, str]] = []
     for error in exc.errors():
-        location = [
-            str(part)
-            for part in error["loc"]
-            if part not in {"body", "query", "path", "header", "cookie"}
-        ]
+        location_parts = error["loc"]
+        if location_parts and location_parts[0] in {
+            "body",
+            "query",
+            "path",
+            "header",
+            "cookie",
+        }:
+            location_parts = location_parts[1:]
+        location = [str(part) for part in location_parts]
         details.append(
             {
                 "field": ".".join(location) or "request",

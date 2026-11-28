@@ -16,6 +16,7 @@ from src.core.exceptions import (
 )
 from src.core.logging import configure_logging
 from src.main import (
+    api_app,
     api_router,
     app,
     health_check,
@@ -23,23 +24,24 @@ from src.main import (
 
 
 def test_application_metadata_and_routes_are_initialized() -> None:
-    assert app.title == "Cubiland API"
+    assert api_app.title == "Cubiland API"
     assert api_router.prefix == "/api/v1"
 
     client = TestClient(app)
-    response = client.get("/health")
+    response = client.get("/health", headers={"Origin": "http://localhost:3000"})
 
     assert response.status_code == 200
     assert response.json() == {"status": "ok"}
+    assert response.headers["access-control-allow-origin"] == "http://localhost:3000"
 
 
 def test_application_registers_centralized_exception_handlers() -> None:
-    assert app.exception_handlers[StarletteHTTPException] is http_exception_handler
+    assert api_app.exception_handlers[StarletteHTTPException] is http_exception_handler
     assert (
-        app.exception_handlers[RequestValidationError]
+        api_app.exception_handlers[RequestValidationError]
         is request_validation_exception_handler
     )
-    assert app.exception_handlers[Exception] is unexpected_exception_handler
+    assert api_app.exception_handlers[Exception] is unexpected_exception_handler
 
 
 def test_exception_handlers_can_be_registered_on_another_app() -> None:
@@ -103,6 +105,30 @@ def test_validation_errors_include_field_details() -> None:
     ]
 
 
+def test_validation_location_removes_only_the_request_marker() -> None:
+    exception = RequestValidationError(
+        [
+            {
+                "type": "missing",
+                "loc": ("body", "body", "items", 0, "query", "field"),
+                "msg": "Field required",
+                "input": None,
+            }
+        ]
+    )
+
+    response = asyncio.run(
+        request_validation_exception_handler(
+            Request({"type": "http"}),
+            exception,
+        )
+    )
+
+    assert json.loads(response.body)["error"]["details"] == [
+        {"field": "body.items.0.query.field", "message": "Field required"}
+    ]
+
+
 def test_unexpected_exceptions_return_generic_500_response() -> None:
     output = StringIO()
     configure_logging("development", stream=output)
@@ -128,3 +154,28 @@ def test_unexpected_exceptions_return_generic_500_response() -> None:
     assert "unhandled_application_error" in output.getvalue()
     assert "RuntimeError" in output.getvalue()
     assert "sensitive exception details" not in output.getvalue()
+
+
+def test_unhandled_server_errors_include_cors_headers() -> None:
+    async def raise_unhandled_error() -> None:
+        raise RuntimeError("test server error")
+
+    api_app.add_api_route(
+        "/_test/unhandled-error",
+        raise_unhandled_error,
+        include_in_schema=False,
+    )
+    try:
+        response = TestClient(app, raise_server_exceptions=False).get(
+            "/_test/unhandled-error",
+            headers={"Origin": "http://localhost:3000"},
+        )
+    finally:
+        api_app.router.routes[:] = [
+            route
+            for route in api_app.router.routes
+            if getattr(route, "endpoint", None) is not raise_unhandled_error
+        ]
+
+    assert response.status_code == 500
+    assert response.headers["access-control-allow-origin"] == "http://localhost:3000"

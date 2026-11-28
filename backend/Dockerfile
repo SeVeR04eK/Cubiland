@@ -6,7 +6,11 @@ RUN pip install --no-cache-dir poetry==2.5.2
 
 COPY pyproject.toml poetry.lock ./
 
-RUN poetry config virtualenvs.in-project true \
+ENV VIRTUAL_ENV=/opt/venv
+ENV PATH="${VIRTUAL_ENV}/bin:${PATH}"
+
+RUN python -m venv "${VIRTUAL_ENV}" \
+    && poetry config virtualenvs.create false \
     && poetry install --only main --no-interaction --no-ansi --no-root
 
 COPY . .

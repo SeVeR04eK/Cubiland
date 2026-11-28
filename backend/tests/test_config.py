@@ -83,3 +83,38 @@ def test_empty_cors_origins_disable_cors() -> None:
         settings = Settings(_env_file=None)
 
     assert settings.cors_origin_list == []
+
+
+@pytest.mark.parametrize(
+    "cors_origin",
+    [
+        "https://example.com/path",
+        "https://example.com?query=1",
+        "https://example.com?",
+        "https://example.com#fragment",
+        "https://example.com#",
+        "https://user@example.com",
+    ],
+)
+def test_cors_origins_reject_non_origin_components(cors_origin: str) -> None:
+    environment = {
+        "DATABASE_URL": "postgresql+asyncpg://localhost:5432/cubiland",
+        "CORS_ORIGINS": cors_origin,
+    }
+    with patch.dict(os.environ, environment, clear=True):
+        with pytest.raises(ValidationError):
+            Settings(_env_file=None)
+
+
+def test_validation_errors_hide_input_values() -> None:
+    secret_url = "postgresql://user:secret-value@localhost:5432/cubiland"
+    with patch.dict(
+        os.environ,
+        {"DATABASE_URL": secret_url, "CORS_ORIGINS": ""},
+        clear=True,
+    ):
+        with pytest.raises(ValidationError) as error:
+            Settings(_env_file=None)
+
+    assert secret_url not in str(error.value)
+    assert "secret-value" not in str(error.value)

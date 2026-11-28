@@ -43,6 +43,7 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         case_sensitive=False,
         extra="ignore",
+        hide_input_in_errors=True,
     )
 
     @field_validator("database_url")
@@ -68,15 +69,34 @@ class Settings(BaseSettings):
     @field_validator("cors_origins")
     @classmethod
     def validate_cors_origins(cls, value: str) -> str:
-        """Validate comma-separated HTTP origins without accepting empty entries."""
+        """Validate comma-separated HTTP origins without paths or credentials."""
         origins = [origin.strip() for origin in value.split(",")]
-        if value.strip() and any(
-            not origin
-            or urlsplit(origin).scheme not in {"http", "https"}
-            or not urlsplit(origin).netloc
-            for origin in origins
-        ):
-            raise ValueError("CORS_ORIGINS must contain valid HTTP origins.")
+        if not value.strip():
+            return value
+
+        for origin in origins:
+            if not origin:
+                raise ValueError("CORS_ORIGINS must contain valid HTTP origins.")
+            try:
+                parsed_origin = urlsplit(origin)
+                _ = parsed_origin.port
+            except ValueError:
+                raise ValueError(
+                    "CORS_ORIGINS must contain valid HTTP origins."
+                ) from None
+            if (
+                parsed_origin.scheme not in {"http", "https"}
+                or not parsed_origin.netloc
+                or not parsed_origin.hostname
+                or parsed_origin.username is not None
+                or parsed_origin.password is not None
+                or parsed_origin.path
+                or parsed_origin.query
+                or parsed_origin.fragment
+                or "?" in origin
+                or "#" in origin
+            ):
+                raise ValueError("CORS_ORIGINS must contain valid HTTP origins.")
         return value
 
     @model_validator(mode="after")
