@@ -54,9 +54,7 @@ jobs:
 
       - name: Install locked backend dependencies
         working-directory: backend
-        run: |
-          poetry config virtualenvs.create false
-          poetry sync --with dev --no-root
+        run: poetry sync --with dev --no-root
 
       - name: Lint with Ruff
         working-directory: backend
