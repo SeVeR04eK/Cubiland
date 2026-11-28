@@ -8,9 +8,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 BACKEND_ROOT = Path(__file__).resolve().parents[2]
 REPOSITORY_ROOT = BACKEND_ROOT.parent
 PROJECT_ROOT = (
-    REPOSITORY_ROOT
-    if (REPOSITORY_ROOT / ".env.example").is_file()
-    else BACKEND_ROOT
+    REPOSITORY_ROOT if (REPOSITORY_ROOT / ".env.example").is_file() else BACKEND_ROOT
 )
 
 
@@ -64,9 +62,7 @@ class Settings(BaseSettings):
             or not hostname
             or not parsed_url.path.strip("/")
         ):
-            raise ValueError(
-                "DATABASE_URL must be a valid PostgreSQL AsyncIO URL."
-            )
+            raise ValueError("DATABASE_URL must be a valid PostgreSQL AsyncIO URL.")
         return value
 
     @field_validator("cors_origins")
@@ -93,8 +89,7 @@ class Settings(BaseSettings):
             )
             if len(secret) < 32 or secret.lower().startswith("change_this"):
                 raise ValueError(
-                    "JWT_SECRET_KEY must be configured with a secure "
-                    "production value."
+                    "JWT_SECRET_KEY must be configured with a secure production value."
                 )
         return self
 
@@ -106,4 +101,4 @@ class Settings(BaseSettings):
         return [origin.strip() for origin in self.cors_origins.split(",")]
 
 
-settings = Settings()
+settings = Settings()  # type: ignore[call-arg]  # Loaded from environment variables.

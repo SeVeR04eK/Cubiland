@@ -10,9 +10,7 @@ from src.core.config import PROJECT_ROOT, Settings
 
 def test_environment_variables_override_defaults() -> None:
     environment = {
-        "DATABASE_URL": (
-            "postgresql+asyncpg://user:password@localhost:5432/cubiland"
-        ),
+        "DATABASE_URL": ("postgresql+asyncpg://user:password@localhost:5432/cubiland"),
         "ENVIRONMENT": "production",
         "JWT_SECRET_KEY": "s" * 32,
         "CORS_ORIGINS": "https://cubiland.example",
@@ -68,9 +66,7 @@ def test_database_url_requires_async_postgresql() -> None:
 
 def test_production_requires_a_configured_jwt_secret() -> None:
     environment = {
-        "DATABASE_URL": (
-            "postgresql+asyncpg://user:password@localhost:5432/cubiland"
-        ),
+        "DATABASE_URL": ("postgresql+asyncpg://user:password@localhost:5432/cubiland"),
         "ENVIRONMENT": "production",
     }
     with patch.dict(os.environ, environment, clear=True):
@@ -80,9 +76,7 @@ def test_production_requires_a_configured_jwt_secret() -> None:
 
 def test_empty_cors_origins_disable_cors() -> None:
     environment = {
-        "DATABASE_URL": (
-            "postgresql+asyncpg://user:password@localhost:5432/cubiland"
-        ),
+        "DATABASE_URL": ("postgresql+asyncpg://user:password@localhost:5432/cubiland"),
         "CORS_ORIGINS": "",
     }
     with patch.dict(os.environ, environment, clear=True):

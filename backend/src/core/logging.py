@@ -1,7 +1,6 @@
 import logging
 import sys
-from typing import Literal
-from typing import TextIO
+from typing import Literal, TextIO
 
 import structlog
 from structlog.types import Processor
@@ -18,9 +17,7 @@ def configure_logging(
     """Configure one structured logging pipeline for the application."""
     selected_environment = environment or settings.environment
     output_stream = stream or sys.stdout
-    log_level = (
-        logging.DEBUG if selected_environment == "development" else logging.INFO
-    )
+    log_level = logging.DEBUG if selected_environment == "development" else logging.INFO
 
     shared_processors: list[Processor] = [
         structlog.contextvars.merge_contextvars,

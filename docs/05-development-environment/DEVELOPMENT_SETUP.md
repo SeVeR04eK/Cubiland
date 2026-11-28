@@ -228,3 +228,15 @@ docker compose up -d
 
 See [GIT_WORKFLOW.md](GIT_WORKFLOW.md) for the branching strategy and
 pull request process.
+
+### GitHub Branch Protection
+
+Configure protection manually for both `main` and `develop`.
+
+**Required settings:**
+
+- Require a Pull Request before merging and block direct pushes or bypasses.
+- Require the `Backend CI / Backend checks` status check to pass. It covers Ruff lint and formatting, mypy, pytest, Alembic migration validation, and the Docker build; all must pass.
+- Do not require approving reviews or enable `Require conversation resolution`. Independent code review is not required for the solo-developer workflow, and open conversations must not block merging.
+
+These settings allow the developer to merge their own Pull Request once all required CI checks pass. Other branch-protection settings are optional if they do not conflict with this workflow. The required status check can be selected after Backend CI has completed successfully at least once on GitHub.

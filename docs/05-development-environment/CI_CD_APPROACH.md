@@ -1,23 +1,18 @@
 # CI/CD Approach
 
-This document describes the planned CI/CD approach for Cubiland. The project is currently in the architecture phase, so CI workflows will be implemented when functional code and tests exist.
+This document describes the CI/CD approach and current implementation status for Cubiland.
 
 ## Current Status
 
-**No CI workflows are currently implemented.**
+**Backend CI is implemented. Frontend CI is planned and not implemented.**
 
-The project is in the Architecture & Technical Design phase. Functional Backend and Frontend applications and tests are not yet implemented. CI workflows will be added when:
+The backend workflow runs on pushes and Pull Requests targeting `main` or `develop`. It validates the existing backend code, tests, migration setup and Docker image build.
 
-- Backend has functional code to test
-- Frontend has functional code to test
-- Test suites are established
-- Build processes are defined
-
-## Planned CI Architecture
+## CI Architecture
 
 ### Backend CI Workflow
 
-When implemented, the Backend CI workflow will run on:
+The Backend CI workflow runs on:
 
 - Pull Requests targeting `main` or `develop`
 - Pushes to `main` or `develop`
@@ -30,6 +25,15 @@ When implemented, the Backend CI workflow will run on:
 - Docker build validation
 
 **Workflow Location:** `.github/workflows/backend-ci.yml`
+
+**Implemented checks:**
+- Ruff linting and formatting checks using the backend configuration.
+- mypy static type checking for `backend/src`.
+- pytest using the backend's configured test suite.
+- Alembic history, heads and upgrade validation against a disposable PostgreSQL service.
+- Docker build validation using `backend/Dockerfile` and `backend/` as the build context.
+
+The Alembic configuration is initialized, but no migration revisions exist yet. The workflow verifies the empty migration history and exercises the migration command against the temporary database; it cannot yet validate application schema changes.
 
 ### Frontend CI Workflow
 
@@ -49,22 +53,32 @@ When implemented, the Frontend CI workflow will run on:
 
 ## Branch Protection Rules
 
-When CI is implemented, configure branch protection:
+Configure these rules manually in GitHub repository settings for both branches.
+
+**Required settings:**
+- Require a Pull Request before merging into `main` or `develop`.
+- Require the `Backend CI / Backend checks` status check to pass before merging. This job includes Ruff lint and format checks, mypy, pytest, Alembic migration validation, and the Docker build; all must pass for the job to succeed.
+- Prevent direct pushes and bypasses so changes can enter protected branches only through a Pull Request that passes CI.
+
+Independent code review is not required for this solo-developer workflow. Do not require approving reviews or enable `Require conversation resolution`; a developer may merge their own Pull Request when required CI passes, even if conversations remain open.
+
+**Optional settings:** GitHub's other branch-protection options may be enabled when useful, provided they do not prevent solo PR merges after successful CI. The workflow itself uses read-only `contents` permissions and does not change repository settings.
 
 ### main Branch
-- Require pull request before merging
-- Require status checks to pass before merging
-- Require approval from at least 1 reviewer
-- Do not allow bypassing the above settings
+- Require Pull Requests and the `Backend CI / Backend checks` status check.
+- Block direct pushes and bypasses.
+- Do not require approving reviews or conversation resolution.
 
 ### develop Branch
-- Require pull request before merging
-- Require status checks to pass before merging
-- Require approval from at least 1 reviewer
+- Require Pull Requests and the `Backend CI / Backend checks` status check.
+- Block direct pushes and bypasses.
+- Do not require approving reviews or conversation resolution.
+
+Select the status check after the workflow has completed successfully at least once on GitHub.
 
 ## Deployment Strategy
 
-### Current Phase (Architecture & Design)
+### Current Phase (Backend Foundation / Early MVP)
 
 - No automated deployment
 - Manual local development with Docker Compose
@@ -78,13 +92,13 @@ When CI is implemented, configure branch protection:
 
 Per [ADR-0009: GitHub Actions CI and Deferred Production CD](../04-architecture/decisions/ADR-0009-github-actions-ci-and-deferred-cd.md):
 
-- **CI:** Automated quality checks on Pull Requests
-- **CD:** Manual controlled deployment for initial release
-- **Future CD:** Automated deployment via GHCR and restricted SSH after release
+- **CI:** Automated backend quality checks on Pull Requests and pushes to `main` and `develop`.
+- **CD:** Deferred. This workflow does not deploy, publish images to GHCR, or use SSH.
+- **Future CD:** Any post-release deployment pipeline remains a separate future decision and implementation.
 
 ### Planned Deployment Pipeline
 
-After initial release, consider:
+After initial release, deployment automation may be considered separately:
 
 1. **Build and Publish:**
    - Build Docker images on merge to `main`

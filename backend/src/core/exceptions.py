@@ -19,8 +19,10 @@ HTTP_ERROR_RESPONSES = {
 
 async def http_exception_handler(
     _request: Request,
-    exc: StarletteHTTPException,
+    exc: Exception,
 ) -> JSONResponse:
+    if not isinstance(exc, StarletteHTTPException):
+        raise TypeError("HTTP exception handler received an unexpected exception.")
     code, message = HTTP_ERROR_RESPONSES.get(
         exc.status_code,
         ("HTTP_ERROR", "The request could not be completed."),
@@ -40,8 +42,12 @@ async def http_exception_handler(
 
 async def request_validation_exception_handler(
     _request: Request,
-    exc: RequestValidationError,
+    exc: Exception,
 ) -> JSONResponse:
+    if not isinstance(exc, RequestValidationError):
+        raise TypeError(
+            "Validation exception handler received an unexpected exception."
+        )
     details: list[dict[str, str]] = []
     for error in exc.errors():
         location = [

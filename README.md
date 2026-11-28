@@ -103,16 +103,19 @@ cubiland/
 
 ## Current Implementation
 
-The repository currently contains the initial application and infrastructure scaffolding:
+The project is currently in its initial development phase.
 
-- A minimal FastAPI application with a `GET /health` health-check endpoint.
-- A Poetry-managed backend project with its initial dependencies.
-- Initial backend module and layer packages.
-- A minimal Celery application placeholder. Broker configuration, task discovery, and application tasks are not implemented yet.
-- A frontend package with the initial React and state-management dependencies. Frontend build tooling and application scripts are not configured yet.
-- An Nginx configuration reserved for a future production deployment; it is not part of the current development Compose setup.
+Implemented backend foundations include:
 
-The core product functionality is still under development.
+- A FastAPI application with centralized configuration and environment validation.
+- Centralized logging and exception handling.
+- CORS configuration and API routing.
+- An initial Clean Architecture package structure.
+- An asynchronous PostgreSQL integration setup with Alembic migration support.
+- A Poetry-managed backend with Ruff linting and formatting, mypy type checking, and pytest configuration.
+- A GitHub Actions backend CI workflow covering code quality checks, type checking, tests, migration validation, and Docker image builds.
+
+The Celery integration, frontend application, and core product functionality are still under development.
 
 ## Getting Started
 

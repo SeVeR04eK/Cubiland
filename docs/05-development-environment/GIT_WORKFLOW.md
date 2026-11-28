@@ -72,29 +72,23 @@ Open a Pull Request targeting `develop`:
 1. Go to GitHub and create a Pull Request.
 2. Use the provided [Pull Request Template](../../.github/PULL_REQUEST_TEMPLATE.md).
 3. Fill in the Summary, Changes, Type of Change, Testing, and Checklist.
-4. Request review from team members (if applicable).
 
 ### 5. Review and Merge
 
-- If working with a team, reviewers provide feedback and request changes if needed.
-- Address feedback and push additional commits.
-- Once approved (or self-reviewed for solo development), merge the PR into `develop`.
+- Independent code review is optional for the solo-developer workflow.
+- Merge the PR into `develop` after all required CI checks pass; no approving review or conversation resolution is required.
 - Use "Squash and merge" to keep history clean.
 
 ### 6. Release to Main
 
 When `develop` is stable and ready for release:
 
-**Option A: Direct Merge (Solo Development)**
+**Option A: Direct Pull Request (No Release Branch)**
 
 If no release branch is needed:
-1. Merge `develop` into `main`:
-   ```bash
-   git checkout main
-   git merge develop
-   git push origin main
-   ```
-2. Tag the release:
+1. Open a Pull Request from `develop` to `main`.
+2. Merge it after the required CI checks pass.
+3. Tag the release:
    ```bash
    git tag -a v1.0.0 -m "Release version 1.0.0"
    git push origin v1.0.0
@@ -111,12 +105,7 @@ If no release branch is needed:
 
 2. Perform final testing and version bumping.
 
-3. Merge `release/v1.0.0` into `main`:
-   ```bash
-   git checkout main
-   git merge release/v1.0.0
-   git push origin main
-   ```
+3. Open a Pull Request from `release/v1.0.0` to `main` and merge after all required CI checks pass.
 
 4. Tag the release:
    ```bash
@@ -124,12 +113,7 @@ If no release branch is needed:
    git push origin v1.0.0
    ```
 
-5. Merge back to `develop`:
-   ```bash
-   git checkout develop
-   git merge release/v1.0.0
-   git push origin develop
-   ```
+5. Open a Pull Request from `release/v1.0.0` back to `develop` and merge after review.
 
 6. Delete the release branch:
    ```bash
@@ -139,26 +123,28 @@ If no release branch is needed:
 
 ## Branch Protection Rules
 
-Configure branch protection on GitHub when the project has a team or CI workflows:
+Configure branch protection manually in GitHub repository settings for both branches.
 
-### For Solo Development (Current Phase)
+### Required Settings
 
-- No mandatory reviewers required
-- No CI status checks required (CI not yet implemented)
-- Optional: Require pull request before merging to main
+- Require a Pull Request before merging into `main` or `develop`.
+- Require the `Backend CI / Backend checks` status check to pass. This single required job covers Ruff lint and format checks, mypy, pytest, Alembic migration validation, and the Docker build; every check must pass for the job to succeed.
+- Block direct pushes and bypasses so protected-branch changes go through a Pull Request and successful CI.
+- Do not require approving reviews or enable `Require conversation resolution`. Independent code review is not required, and open conversation threads must not block a merge.
 
-### For Team Development (Future)
+These settings allow the solo developer to merge their own Pull Request once CI succeeds.
+
+### Optional Settings
+
+Other branch-protection settings are optional. Enable them only when they remain compatible with merging a solo-authored Pull Request after required CI passes.
 
 ### main Branch
-- Require pull request before merging
-- Require status checks to pass before merging (when CI is implemented)
-- Require approval from at least 1 reviewer
-- Do not allow bypassing the above settings
+- Require Pull Requests and the `Backend CI / Backend checks` status check.
+- Block direct pushes and bypasses.
 
 ### develop Branch
-- Require pull request before merging
-- Require status checks to pass before merging (when CI is implemented)
-- Require approval from at least 1 reviewer
+- Require Pull Requests and the `Backend CI / Backend checks` status check.
+- Block direct pushes and bypasses.
 
 ## Pull Request Guidelines
 
