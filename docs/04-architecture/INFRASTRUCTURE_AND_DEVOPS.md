@@ -164,29 +164,28 @@ GitHub Actions is the selected CI platform.
 
 ### 8.1 Pull Request Workflow
 
-CI runs for Pull Requests targeting `main`.
+Backend CI runs for Pull Requests targeting `main` or `develop` and pushes to either branch.
 
-The workflow should perform:
+The implemented backend workflow performs:
 
 1. Dependency installation.
-2. Backend linting and formatting checks.
-3. Backend type checking.
-4. Backend automated tests.
-5. Frontend linting and type checking.
-6. Frontend automated tests where available.
-7. Database migration validation.
-8. Docker image build validation.
+2. Backend Ruff linting and formatting checks.
+3. Backend mypy type checking.
+4. Backend pytest tests.
+5. Alembic history and upgrade validation against a disposable PostgreSQL service.
+6. Backend Docker image build validation.
 
-The exact commands are defined by the project's package scripts and tooling configuration.
+Frontend CI is not implemented. The Alembic setup currently has no migration revisions; migration validation will cover revisions as they are added.
 
 ### 8.2 Branch Protection
 
-The `main` branch is protected.
+Configure both `main` and `develop` to require Pull Requests and the `Backend CI / Backend checks` status check. Block direct pushes and bypasses on both branches. All checks in the backend job—Ruff linting and formatting, mypy, pytest, Alembic validation and Docker build—must pass before merging.
 
 - Feature and fix branches are merged through Pull Requests.
-- Direct pushes to `main` are disabled for normal development.
 - Required CI checks must pass before merge.
-- A Pull Request review requirement may be enabled when additional collaborators are working on the project.
+- Independent code review is not required for the solo-developer workflow. Do not require approving reviews or conversation resolution; open conversations do not block merging.
+- Other branch-protection settings are optional if they do not prevent merging a solo-authored Pull Request after required CI passes.
+- Configure these settings manually in GitHub; the workflow has no repository administration permissions.
 
 ### 8.3 CI Scope Before Release
 

@@ -1,0 +1,85 @@
+name: Backend CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    name: Backend checks
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql+asyncpg://postgres@localhost:5432/cubiland_ci
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: cubiland_ci
+          POSTGRES_USER: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d cubiland_ci"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.14
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: Cache Poetry packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ runner.os }}-python-3.14-poetry-${{ hashFiles('backend/poetry.lock') }}
+
+      - name: Install Poetry
+        run: pipx install poetry==2.5.2
+
+      - name: Install locked backend dependencies
+        working-directory: backend
+        run: poetry sync --with dev --no-root
+
+      - name: Lint with Ruff
+        working-directory: backend
+        run: poetry run ruff check src tests alembic
+
+      - name: Check formatting with Ruff
+        working-directory: backend
+        run: poetry run ruff format --check src tests alembic
+
+      - name: Type-check with mypy
+        working-directory: backend
+        run: poetry run mypy src alembic
+
+      - name: Run backend tests
+        working-directory: backend
+        run: poetry run pytest
+
+      - name: Validate Alembic migrations
+        working-directory: backend
+        run: |
+          poetry run alembic -c alembic.ini history
+          poetry run alembic -c alembic.ini heads
+          poetry run alembic -c alembic.ini upgrade head
+
+      - name: Build backend Docker image
+        run: docker build --tag cubiland-backend:ci ./backend
